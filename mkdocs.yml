@@ -1,0 +1,10 @@
+site_name: Seminar "Understanding Deep Learning" WS25/26
+repo_url: https://github.com/link-er/seminar_UDL_wise2526
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - Schedule: schedule.md
+  - Reports:
+      - Week 01: reports/week01-kickoff.md
