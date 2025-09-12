@@ -1,7 +1,13 @@
 site_name: Seminar "Understanding Deep Learning" WS25/26
+site_url: https://link-er.github.io/seminar_UDL_wise2526/   
 repo_url: https://github.com/link-er/seminar_UDL_wise2526
+docs_dir: docs           # folder containing your Markdown files
+use_directory_urls: true  # enables pretty URLs
+
 theme:
   name: material
+  features:
+    - navigation.instant
 
 nav:
   - Home: index.md
