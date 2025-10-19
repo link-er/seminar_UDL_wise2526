@@ -17,7 +17,35 @@ Each week, one or more students will present a chapter or topic and document the
 - **Contribute to the GitHub site:** Upload your report in the appropriate folder on the repository.
 
 ## Resources
-- **Report Template:** [Download here](./report_template.md)  
+- **Report Template:** 
+```markdown
+\# Report – Week XX: \[Chapter Title]
+
+
+
+\*\*Presenter:\*\* \[Name]  
+
+\*\*Date:\*\* \[DD.MM.YYYY]  
+
+
+
+\## Summary
+
+(1–2 page summary of key concepts, equations, and methods)
+
+
+\## Discussion Notes
+
+\- Key questions raised during seminar
+
+\- Open problems or unclear points
+
+
+
+\## References
+
+\- Links to relevant papers, blog posts, code
+```
 - **Book Chapters:** Access online [here](https://udlbook.github.io/udlbook/)
 
 > The detailed seminar schedule is available on the [Schedule Page](schedule.md).

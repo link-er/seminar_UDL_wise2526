@@ -1,3 +1,4 @@
+```markdown
 \# Report – Week XX: \[Chapter Title]
 
 
@@ -24,6 +25,4 @@
 \## References
 
 \- Links to relevant papers, blog posts, code
-
-
-
+```
