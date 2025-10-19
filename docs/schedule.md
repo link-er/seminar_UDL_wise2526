@@ -1,8 +1,11 @@
 # Seminar Schedule: Understanding Deep Learning (WS 25/26)
 
 **Meetings:** Mondays, weekly (20 Oct 2025 – 6 Feb 2026), 14.00-16.00, room OH12/1.054
-**Winter break:** 22 Dec 2025 – 2 Jan 2026 
-**Total students:** 19  
+
+**Winter break:** 22 Dec 2025 – 2 Jan 2026
+
+**Total students:** 19
+
 
 | Week | Date | Chapters | Pages (approx.) | Students | Notes |
 |------|------|-----------|----------------|-----------|-------|
