@@ -6,6 +6,7 @@ Each week, one or more students will present a chapter or topic and document the
 
 ## Announcements
 - On **3rd November** I have to attetnd my research group meeting to give a presentation - I would ask you to start around 1.5 hours later, so at 15.30. Please let me know if it does not work for you.
+- Presentations will be stored (at least for the time of the seminar) [here](https://drive.google.com/drive/folders/1DlAwCetCqR_Qu3-5aVA0qH4auK8Dk6KA?usp=sharing)
 
 ## Semester Details
 - **Dates:** 20 Oct 2025 – 2 Feb 2026  
