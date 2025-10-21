@@ -4,6 +4,9 @@ This seminar is based on the open-access book [Understanding Deep Learning](http
 
 Each week, one or more students will present a chapter or topic and document the results here. The goal is to create a collaborative, semester-long learning resource, including **presentation summaries, discussion notes, and reports**.
 
+## Announcements
+- On **3rd November** I have to attetnd my research group meeting to give a presentation - I would ask you to start around 1.5 hours later, so at 15.30. Please let me know if it does not work for you.
+
 ## Semester Details
 - **Dates:** 20 Oct 2025 – 2 Feb 2026  
 - **Venue:** room OH12/1.054

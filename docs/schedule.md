@@ -7,7 +7,7 @@
 
 | Week | Date | Chapters | Pages (approx.) | Students | Notes |
 |------|------|-----------|----------------|-----------|-------|
-| 0 | **20 Oct 2025** | Ch. 1–2: Introduction + Supervised Learning | – | Instructor | Intro lecture, organization, topic assignment |
+| 0 | 20 Oct 2025 | Ch. 1–2: Introduction + Supervised Learning | – | Instructor | Intro lecture, organization, topic assignment |
 | 1 | 27 Oct 2025 | Ch. 3–4: Shallow & Deep Neural Networks | 22 | 1 | Fundamentals of network architectures |
 | 2 | 3 Nov 2025 | Ch. 5–6: Loss Functions & Fitting Models | 30 | 2 | Training objectives and optimization setup |
 | 3 | 10 Nov 2025 | Ch. 7: Gradients & Initialization | 15 | 1 | Backpropagation & parameter initialization |
