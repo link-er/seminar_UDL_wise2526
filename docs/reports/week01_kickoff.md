@@ -55,6 +55,8 @@
   **The Tradeoff** :<br>
     - Simple Network (*Low complexity*): if Bias **High** and Variance **Low** ==> **Underfitting**<br>
     - Complex Network (*High complexity*): if Bias **Low** and Variance **High** ==> **Overfitting**
+ 
+  ![Bias-Variance tradeoff](seminar_UDL_wise2526/docs/images/Bias-Varainace-Tradeoff.jps)
 
 
 ## References
@@ -62,5 +64,6 @@
 - Deep Learning using Rectified Linear Units (ReLU) [[Link]](https://arxiv.org/pdf/1803.08375)
 
 - A Modern Take on the Bias-Variance Tradeoff in Neural Networks [[Link]](https://arxiv.org/pdf/1810.08591)
+
 
 
