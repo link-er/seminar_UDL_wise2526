@@ -23,6 +23,7 @@
 | 2 Feb 2026 | Ch. 20–21: Why Deep Learning Works & Ethics | 31 | Instructor | Conceptual and societal discussion |
 
 **Groups**:
+
 - **gr1** Ponikarov Antonia
 - **gr2** Zoghlami Fadi, Ben Halima Ibrahim
 - **gr3** Filipiak Lucas, Romanovych Ivanna
