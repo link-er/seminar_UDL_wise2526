@@ -13,5 +13,6 @@ nav:
   - Home: index.md
   - Schedule: schedule.md
   - Reports:
-      - Week 01: reports/week02_ch3_4.md
-      - Week 02: reports/week03.md
+      - Week 01: reports/week01_kickoff.md
+      - Week 02: reports/week02_ch3_4.md
+      - Week 03: reports/week03_ch5_6.md
