@@ -1,4 +1,4 @@
-# Report – Week 01: Shallow & Deep Neural Networks
+# Report – Week 02: Shallow & Deep Neural Networks
 
 
 
