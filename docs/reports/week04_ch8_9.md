@@ -29,7 +29,7 @@ In the first section of this chapter, a simple model is trained on the [**MNIST-
 Our simple model/neural network consists of **D_i = 40** inputs and **D_o = 10** outputs representing the number of classes the dataset has (numbers form 0 to 9). The neural network has **2** hidden layers each with **D = 100** hidden units. **Multiclass cross-entropy** is used as a loss function with the **Softmax** function to produce class probabilities.<br>
 The model is then trained for **6000 steps (150 epochs)** using **SGD** (**S**tochastic **G**radient **D**escent) as a learning algorithm with a learning rate of **0.1** and a batch-size of **100**. After the training process, we tested our trained model on **1000** extra examples from the dataset.
 
-![Train-Test-Error-Loss](../images/Train-Test-Error-Loss.jpg)
+![Train-Test-Error-Loss](../images/PerfMNIST1DResults.svg)
 
 **II - Sources of error:**
 
