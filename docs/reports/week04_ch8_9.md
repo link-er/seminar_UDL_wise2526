@@ -24,7 +24,12 @@ The test errors have three distinct causes:
 
 In the first section of this chapter, a simple model is trained on the [**MNIST-1D**](https://arxiv.org/pdf/2011.14439) dataset, which is 1D analogue of the **MNIST** dataset: each data example is created by randomly transforming one of the templates and adding noise.
 
-![MNIST-1D dataset]()
+![MNIST-1D dataset](../images/MNIST-1D-Dataset.jpg)
+
+Our simple model/neural network consists of **D_i = 40** inputs and **D_o = 10** outputs representing the number of classes the dataset has (numbers form 0 to 9). The neural network has **2** hidden layers each with **D = 100** hidden units. **Multiclass cross-entropy** is used as a loss function with the **Softmax** function to produce class probabilities.<br>
+The model is then trained for **6000 steps (150 epochs)** using **SGD** (**S**tochastic **G**radient **D**escent) as a learning algorithm with a learning rate of **0.1** and a batch-size of **100**. After the training process, we tested our trained model on **1000** extra examples from the dataset.
+
+![Train-Test-Error-Loss](../images/Train-Test-Error-Loss.jpg)
 
 **II - Sources of error:**
 
