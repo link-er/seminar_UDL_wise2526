@@ -12,7 +12,7 @@
 
 ### Chapter 8: Measuring performance
 
-**I - Training a simple model:**
+**<u>I - Training a simple model:</u>**
 
 A neural network with **sufficient capacity** will mostly perform well on the training dataset. However, this does not mean that it will generalize well on the testing dataset (which is normally new and unseen data for the model). This causes a big problem especially for real-world scenarios, where the model'performance has to be as good as possible. <br>
 ==> Our goal is to train a model that **generalizes well on new data**
@@ -30,6 +30,13 @@ Our simple model/neural network consists of **D_i = 40** inputs and **D_o = 10**
 The model is then trained for **6000 steps (150 epochs)** using **SGD** (**S**tochastic **G**radient **D**escent) as a learning algorithm with a learning rate of **0.1** and a batch-size of **100**. After the training process, we tested our trained model on **1000** extra examples from the dataset.
 
 ![Train-Test-Error-Loss](../images/PerfMNIST1DResults.svg)
+
+In figure (a), we can see that the training error decreases as the training proceeds (the training data is classified *perfectly* after around **4000
+training steps**). The testing error, however, decreases as well but to about **40%** and does not drop below it.<br>
+In figure(b), the training loss also decreases continuously towards zero as the training proceeds. The testing loss, on the other hand, decreases at first but suddenly starts going up after around **1500 training steps** reaching higher values than before.<br>
+=> Our model is making the same mistakes but with increasing confidence and this will decrease the probability of correct answers, and
+therefore increase the negative log-likelihood<br>
+=> Our model has then **memorized** the training data but **does not generalize well** on the testing data
 
 **II - Sources of error:**
 
