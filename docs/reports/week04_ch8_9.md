@@ -33,16 +33,16 @@ The model is then trained for **6000 steps (150 epochs)** using **SGD** (**S**to
 
 In figure (a), we can see that the training error decreases as the training proceeds (the training data is classified *perfectly* after around **4000
 training steps**). The testing error, however, decreases as well but to about **40%** and does not drop below it.<br>
-In figure(b), the training loss also decreases continuously towards zero as the training proceeds. The testing loss, on the other hand, decreases at first but suddenly starts going up after around **1500 training steps** reaching higher values than before.<br>
-=> Our model is making the same mistakes but with increasing confidence and this will decrease the probability of correct answers, and
+In figure (b), the training loss also decreases continuously towards zero as the training proceeds. The testing loss, on the other hand, decreases at first but suddenly starts going up after around **1500 training steps** reaching higher values than before.<br>
+=> Our model is making, in this case, the same mistakes but with increasing confidence and this will decrease the probability of correct answers, and
 therefore increase the negative log-likelihood<br>
 => Our model has then **memorized** the training data but **does not generalize well** on the testing data
 
-**II - Sources of error:**
+**<u>II - Sources of error:</u>**
 
-**III - Reducing error:**
+**<u>III - Reducing error:</u>**
 
-**IV - Hyperparameters:**
+**<u>IV - Hyperparameters:</u>**
 
 ### Chapter 9: Regularization (TO DO !!)
 
