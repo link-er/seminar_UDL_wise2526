@@ -2,7 +2,7 @@
 
 - **Meetings:** Mondays, weekly (20 Oct 2025 – 6 Feb 2026), 14.00-16.00, room OH12/1.054
 - **Winter break:** 22 Dec 2025 – 2 Jan 2026
-- **Total students:** <s>19</s> 14
+- **Total students:** <s>19</s> 11
 
 | Date | Chapters | Pages (approx.) | Students | Notes |
 |------|-----------|----------------|-----------|-------|
@@ -14,10 +14,10 @@
 | 24 Nov 2025 | Ch. 10–11: CNNs & Residual Networks **will be rescheduled** | 31 | P gr9, D ? | Convolutional structures and ResNets |
 | 1 Dec 2025 | Ch. 12: Transformers | 25 | P gr5, D ? | Attention and transformer architectures |
 | 8 Dec 2025 | Ch. 13: Graph Neural Networks | 21 | P gr8, D ? | Graph-based representations |
-| <s>15 Dec 2025 | Ch. 14–15: Unsupervised Learning & GANs | 27 | 1 | Representation learning and generative adversarial models</s> |
+| <s>15 Dec 2025</s> | <s>Ch. 14–15: Unsupervised Learning & GANs</s> | 27 | 1 | <s>Representation learning and generative adversarial models</s> |
 | 22 Dec – 2 Jan | **Winter break** | – | – | No meeting |
-| <s>5 Jan 2026 | Ch. 16: Normalizing Flows | 17 | 1 | Flow-based generative modeling</s> |
-| <s>12 Jan 2026 | Ch. 17: Variational Autoencoders | 16 | 1 | Probabilistic latent variable models</s> |
+| <s>5 Jan 2026</s> | <s>Ch. 16: Normalizing Flows</s> | 17 | 1 | <s>Flow-based generative modeling</s> |
+| <s>12 Jan 2026</s> | <s>Ch. 17: Variational Autoencoders | 16 | 1 | <s>Probabilistic latent variable models</s> |
 | 19 Jan 2026 | Ch. 18: Diffusion Models | 19 | P gr7, D gr4 | Modern generative diffusion approaches |
 | 26 Jan 2026 | Ch. 19: Reinforcement Learning | 22 | P gr4, D ? | Policy gradients and deep RL |
 | 2 Feb 2026 | Ch. 20–21: Why Deep Learning Works & Ethics | 31 | Instructor | Conceptual and societal discussion |
@@ -33,6 +33,3 @@
 - **gr7** Semler Alexander (P, D)
 - **gr8** Vu Minh Nhat (P, _)
 - **gr9** Pellecer Aisaiah (P, _)
-<s>- **gr10** Hense Niclas Wolf</s>
-<s>- **gr11** Santhosh Nair Sankar</s>
-<s>- **gr12** Gebre Haftom Desbele</s>
