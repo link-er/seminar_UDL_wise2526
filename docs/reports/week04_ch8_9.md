@@ -49,6 +49,25 @@ When a neural network fails to generalize well, there are mainly three sources o
 
 ![Noise-Bias-Varinace](../images/PerfNoiseBiasVariance.svg)
 
+- **Mathematical formulation of test error:**
+  ```m̀ath
+    \[
+    \mathbb{E}_{\mathcal{D}} \big[ \mathbb{E}_{y}[L[x]] \big]
+    = \mathbb{E}_{\mathcal{D}} \Big[ \big( f[x, \phi[\mathcal{D}]] - f_{\mu}[x] \big)^2 \Big]
+    + \big( f_{\mu}[x] - \mu[x] \big)^2
+    + \sigma^2.
+    \]
+
+    \underbrace{\mathbb{E}_{\mathcal{D}} \Big[ \big( f[x, \phi[\mathcal{D}]] - f_{\mu}[x] \big)^2 \Big]}_{\text{variance}}
+    \quad
+    \underbrace{\big( f_{\mu}[x] - \mu[x] \big)^2}_{\text{bias}}
+    \quad
+    \underbrace{\sigma^2}_{\text{noise}}
+
+  ```
+$\mathbb{E}_{\mathcal{D}} \big[ \mathbb{E}_{y}[L[x]] \big]= \underbrace{\mathbb{E}_{\mathcal{D}} \Big[ \big( f[x, \phi[\mathcal{D}]] - f_{\mu}[x] \big)^2 \Big]}_{\text{variance}}+ \underbrace{\big( f_{\mu}[x] - \mu[x] \big)^2}_{\text{bias}}+ \underbrace{\sigma^2}_{\text{noise}}.$
+
+
 **<u>III - Reducing error:</u>**
 
 **<u>IV - Hyperparameters:</u>**
