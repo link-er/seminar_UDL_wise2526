@@ -26,10 +26,10 @@ In the first section of this chapter, a simple model is trained on the [**MNIST-
 
 ![MNIST-1D dataset](../images/MNIST-1D-Dataset.jpg)
 
-Our simple model/neural network consists of **D_i = 40** inputs and **D_o = 10** outputs representing the number of classes the dataset has (numbers form 0 to 9). The neural network has **2** hidden layers each with **D = 100** hidden units. **Multiclass cross-entropy** is used as a loss function with the **Softmax** function to produce class probabilities.<br>
+Our simple model/neural network consists of **$D_i$ = 40** inputs and **$D_o$ = 10** outputs representing the number of classes the dataset has (numbers form 0 to 9). The neural network has **2** hidden layers each with **$D$ = 100** hidden units. **Multiclass cross-entropy** is used as a loss function with the **Softmax** function to produce class probabilities.<br>
 The model is then trained for **6000 steps (150 epochs)** using **SGD** (**S**tochastic **G**radient **D**escent) as a learning algorithm with a learning rate of **0.1** and a batch-size of **100**. After the training process, we tested our trained model on **1000** extra examples from the dataset.
 
-![Train-Test-Error-Loss](../images/PerfMNIST1DResults.svg)
+ ![Train-Test-Error-Loss](../images/PerfMNIST1DResults.svg)
 
 In figure (a), we can see that the training error decreases as the training proceeds (the training data is classified *perfectly* after around **4000
 training steps**). The testing error, however, decreases as well but to about **40%** and does not drop below it.<br>
@@ -47,26 +47,11 @@ When a neural network fails to generalize well, there are mainly three sources o
 - **Bias:** this happens when the model is **not flexible enough** to fit the data perfectly. In figure (b) below for example, the three-region model (*cyan line*) cannot exactly fit the true function (*black line*), even with the best possible parameters (gray regions represent signed error). 
 - **Variance:** this occurs when there are **limited** training examples, and therefore there is no way to distinguish noise in the underlying data from systematic changes in the underlying function.This means that, for different training datasets, the result will be slightly different each time (figure (c) below). In practice, however, there can be an **additional variance** due to the stochastic learning algorithm, which does not necesseraliy converge to the same solution each time.
 
-![Noise-Bias-Varinace](../images/PerfNoiseBiasVariance.svg)
+ ![Noise-Bias-Varinace](../images/PerfNoiseBiasVariance.svg)
 
 - **Mathematical formulation of test error:**
-  ```m̀ath
-    \[
-    \mathbb{E}_{\mathcal{D}} \big[ \mathbb{E}_{y}[L[x]] \big]
-    = \mathbb{E}_{\mathcal{D}} \Big[ \big( f[x, \phi[\mathcal{D}]] - f_{\mu}[x] \big)^2 \Big]
-    + \big( f_{\mu}[x] - \mu[x] \big)^2
-    + \sigma^2.
-    \]
 
-    \underbrace{\mathbb{E}_{\mathcal{D}} \Big[ \big( f[x, \phi[\mathcal{D}]] - f_{\mu}[x] \big)^2 \Big]}_{\text{variance}}
-    \quad
-    \underbrace{\big( f_{\mu}[x] - \mu[x] \big)^2}_{\text{bias}}
-    \quad
-    \underbrace{\sigma^2}_{\text{noise}}
-
-  ```
-$\mathbb{E}_{\mathcal{D}} \big[ \mathbb{E}_{y}[L[x]] \big]= \underbrace{\mathbb{E}_{\mathcal{D}} \Big[ \big( f[x, \phi[\mathcal{D}]] - f_{\mu}[x] \big)^2 \Big]}_{\text{variance}}+ \underbrace{\big( f_{\mu}[x] - \mu[x] \big)^2}_{\text{bias}}+ \underbrace{\sigma^2}_{\text{noise}}.$
-
+ ![Noise-Bias-Variance-Equation](../images/Noise-Bias-Variance-Equation.png)
 
 **<u>III - Reducing error:</u>**
 
