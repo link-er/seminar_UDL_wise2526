@@ -43,9 +43,9 @@ therefore increase the negative log-likelihood<br>
 When a neural network fails to generalize well, there are mainly three sources of error:
 
 - **Noise:** the data generation process itself includes the addition of noise to the input data. Therefore, there are **multiple possible valid** outputs for each input (figure (a) below). This may be caused due to a **stochastic element** in the data generation process (mislabeled data as an example). In some rare cases, the noise can be **absent**: for example, a network might approximate a function that is deterministic but requires significant computation to evaluate.<br>
-=> However, noise is usually a fundamental limitaion on the test performance
+=> However, noise is <u>usually</u> a fundamental limitaion on the test performance
 - **Bias:** this happens when the model is **not flexible enough** to fit the data perfectly. In figure (b) below for example, the three-region model (*cyan line*) cannot exactly fit the true function (*black line*), even with the best possible parameters (gray regions represent signed error). 
-- **Variance:** this occurs when there are **limited** training examples, and therefore there is no way to distinguish noise in the underlying data from systematic changes in the underlying function.This means that, for different training datasets, the result will be slightly different each time (figure (c) below). In practice, however, there can be an additional variance due to the stochastic learning algorithm, which does not necesseraliy converge to the same solution each time.
+- **Variance:** this occurs when there are **limited** training examples, and therefore there is no way to distinguish noise in the underlying data from systematic changes in the underlying function.This means that, for different training datasets, the result will be slightly different each time (figure (c) below). In practice, however, there can be an **additional variance** due to the stochastic learning algorithm, which does not necesseraliy converge to the same solution each time.
 
 ![Noise-Bias-Varinace](../images/PerfNoiseBiasVariance.svg)
 
