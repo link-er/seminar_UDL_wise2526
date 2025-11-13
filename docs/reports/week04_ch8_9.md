@@ -66,3 +66,4 @@ When a neural network fails to generalize well, there are mainly three sources o
 ## References
 
 - IBM - What is overfitting ? [[Link]](https://www.ibm.com/think/topics/overfitting)
+- Three Sources of Model Error: Bias, Variance, and Noise [[Link]](https://python.plainenglish.io/three-sources-of-model-error-bias-variance-and-noise-9d740c0ba5d6)
