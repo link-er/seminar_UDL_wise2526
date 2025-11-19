@@ -35,7 +35,7 @@ In figure (a), we can see that the training error decreases as the training proc
 training steps**). The testing error, however, decreases as well but to about **40%** and does not drop below it.<br>
 In figure (b), the training loss also decreases continuously towards zero as the training proceeds. The testing loss, on the other hand, decreases at first but suddenly starts going up after around **1500 training steps** reaching higher values than before.<br>
 => Our model is making, in this case, the same mistakes but with increasing confidence and this will decrease the probability of correct answers, and
-therefore increase the negative log-likelihood<br>
+therefore increase the negative log-likelihood.<br>
 => Our model has then **memorized** the training data but **does not generalize well** on the testing data.
 
 **<u>II - Sources of error:</u>**
@@ -67,11 +67,15 @@ The figure below shows the effect of training with three different samples (*6, 
 - **Reducing Bias:** in order to reduce the bias term, we can **increase the capacity** of our model/neural network (number of hidden units and/or layers) which makes it **more flexible** and able to describe the true underlying function.<br>
 The figure below shows the effect of increasing the number of linear regions (*3, 5 and 10 regions*): by increasing the number of linear
 regions, the model becomes flexible enough to fit the true function closely. As a result, the bias term decreases (*gray region in a-c*). **Unfortuantely**, this causes the variance term to go up (*gray region d-f*).<br>
-=> Increasing the model capacity <u>does not necesseraliy</u> reduce the test error => **Bias-Variance trade-off**
+=> Increasing the model capacity <u>does not necesseraliy</u> reduce the test error ==> **Bias-Variance trade-off**
 
 ![Reducing-Bias](../images/PerfBias.svg)
 
-- **Bias-Variance trade-off:**
+- **Bias-Variance trade-off:** when a model is too simple (*low capacity*), it **ignores** useful information, and the error is composed mostly of that from bias ==> **Underfitting**<br>
+When a model is too complex, it **memorizes** non-general patterns, and the error is composed mostly of that from variance ==> **Overfitting**<br>
+In both cases the model does not generalize well on new unseen data. The ideal model aims to <u>minimize</u> both bias and variance. It lays in the sweet spot (not too simple, nor too complex). Achieving such a balance will yield the **minimum error**.
+
+![Bias-Variance-trade-off](../images/PerfBiasVarianceTradeoff.svg)
 
 - **Double-Descent:**
 
