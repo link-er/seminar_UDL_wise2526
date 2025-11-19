@@ -49,7 +49,7 @@ When a neural network fails to generalize well, there are mainly three sources o
 
  ![Noise-Bias-Varinace](../images/PerfNoiseBiasVariance.svg)
 
-- **Mathematical formulation of test error:**
+- **Mathematical formulation of test error:** (TODO !!)
 
  ![Noise-Bias-Variance-Equation](../images/Noise-Bias-Variance-Equation.png)
 
@@ -83,11 +83,11 @@ In both cases the model does not generalize well on new unseen data. The ideal m
 | **Optimal** | Moderate | Moderate | Best generalization |
 | **Overfitting** | Low | High | Poor test performance |
 
-- **Double-Descent:**
+- **Double-Descent:** (TODO !!)
 
-**<u>IV - Hyperparameters:</u>**
+**<u>IV - Hyperparameters:</u>** (TODO !!)
 
-### Chapter 9: Regularization (TO DO !!)
+### Chapter 9: Regularization (TODO !!)
 
 ## Discussion Notes
 
