@@ -91,3 +91,5 @@ regions, the model becomes flexible enough to fit the true function closely. As 
 
 - IBM - What is overfitting ? [[Link]](https://www.ibm.com/think/topics/overfitting)
 - Three Sources of Model Error: Bias, Variance, and Noise [[Link]](https://python.plainenglish.io/three-sources-of-model-error-bias-variance-and-noise-9d740c0ba5d6)
+- A Modern Take on the Bias-Variance Tradeoff in Neural Networks [[Link]](https://arxiv.org/pdf/1810.08591)
+- The Bias-Variance trade-off [[Link]](https://mlu-explain.github.io/bias-variance/)
