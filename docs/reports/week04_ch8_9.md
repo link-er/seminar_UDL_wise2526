@@ -64,9 +64,16 @@ The figure below shows the effect of training with three different samples (*6, 
 
 => In general, adding more training data <u>almost always</u> improves test performance.
 
-- **Reducing Bias:** in order to reduce the bias term, we can **increase the capacity** of our model/neural network (number of hidden units and/or layers) which makes it more flexible and able to describe the true underlying function.
+- **Reducing Bias:** in order to reduce the bias term, we can **increase the capacity** of our model/neural network (number of hidden units and/or layers) which makes it **more flexible** and able to describe the true underlying function.<br>
+The figure below shows the effect of increasing the number of linear regions (*3, 5 and 10 regions*): by increasing the number of linear
+regions, the model becomes flexible enough to fit the true function closely. As a result, the bias term decreases (*gray region in a-c*). **Unfortuantely**, this causes the variance term to go up (*gray region d-f*).<br>
+=> Increasing the model capacity <u>does not necesseraliy</u> reduce the test error => **Bias-Variance trade-off**
 
 ![Reducing-Bias](../images/PerfBias.svg)
+
+- **Bias-Variance trade-off:**
+
+- **Double-Descent:**
 
 **<u>IV - Hyperparameters:</u>**
 
