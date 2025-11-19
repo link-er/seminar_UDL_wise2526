@@ -77,6 +77,12 @@ In both cases the model does not generalize well on new unseen data. The ideal m
 
 ![Bias-Variance-trade-off](../images/PerfBiasVarianceTradeoff.svg)
 
+|  | Bias | Variance | Result | 
+|--|------|----------|--------|
+| **Underfitting** | High | Low | Poor training and test performances |
+| **Optimal** | Moderate | Moderate | Best generalization |
+| **Overfitting** | Low | High | Poor test performance |
+
 - **Double-Descent:**
 
 **<u>IV - Hyperparameters:</u>**
