@@ -63,7 +63,10 @@ The figure below shows the effect of training with three different samples (*6, 
 ![Reducing-Variance](../images/PerfVariance.svg)
 
 => In general, adding more training data <u>almost always</u> improves test performance.
-- **Reducing Bias:**
+
+- **Reducing Bias:** in order to reduce the bias term, we can **increase the capacity** of our model/neural network (number of hidden units and/or layers) which makes it more flexible and able to describe the true underlying function.
+
+![Reducing-Bias](../images/PerfBias.svg)
 
 **<u>IV - Hyperparameters:</u>**
 
