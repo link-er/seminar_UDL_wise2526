@@ -58,6 +58,10 @@ When a neural network fails to generalize well, there are mainly three sources o
 The **Noise** component is **insurmountable**, which means there is nothing we can do to avoid it. It represents a <u>fundamental limit</u> on expected model performance. **However**, we can reduce the Variance and Bias terms.
 
 - **Reducing Variance:** variance results from limited noisy training data. This actually means that we can reduce it by **increasing the quantity** of our training data. This approach averages out the inherent noise and ensures that the input space is well sampled.<br>
+The figure below shows the effect of training with three different samples (*6, 10 and 100 samples*). The best-fitting model for each dataset is then plotted: as we can see, with only **6 samples**, the fitted function is <u>different</u> each time and the variance term is therefore significant. When we **increase** the number of samples, the fitted models become very <u>similar</u> and the variance term reduces as a result.
+
+![Reducing-Variance](../images/PerfVariance.svg)
+
 => In general, adding more training data <u>almost always</u> improves test performance.
 - **Reducing Bias:**
 
