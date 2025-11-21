@@ -107,3 +107,4 @@ Hyperparameters are typically chosen <u>empirically</u>: we train many models wi
 - Three Sources of Model Error: Bias, Variance, and Noise [[Link]](https://python.plainenglish.io/three-sources-of-model-error-bias-variance-and-noise-9d740c0ba5d6)
 - A Modern Take on the Bias-Variance Tradeoff in Neural Networks [[Link]](https://arxiv.org/pdf/1810.08591)
 - The Bias-Variance trade-off [[Link]](https://mlu-explain.github.io/bias-variance/)
+- The Importance of Data Splitting [[Link]](https://mlu-explain.github.io/train-test-validation/)
