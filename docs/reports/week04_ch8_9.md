@@ -89,7 +89,7 @@ In both cases the model does not generalize well on new unseen data. The ideal m
 
 Hyperparameters consist of not only the number of hidden layers and the number of hidden units per layer, but also of the learning rate, the choice of the learning algorithm itself, the batch size and much more. The process of finding the best hyperparameters is called **hyperparameter search** or **neural architecture search** (when focusing on the network structure).
 
-Hyperparameters are typically chosen <u>empirically</u>: we train many models with different hyperparameters on the **same training dataset**, then measure their performance and retain the best model. However, measuring the performance **does not** happen on the test set, as this may produce good results on that specific set but the model does not generalize well on other new unseen data.
+Hyperparameters are typically chosen <u>empirically</u>: we train many models with different hyperparameters on the **same training dataset**, then measure their performance and retain the best model. However, measuring the performance **does not** happen on the test set, as this may produce good results on only that specific set but the model does not generalize well on other new unseen data. Instead, we use a third dataset called the **validation set**. That means, for each choice of hyperparameters we train our model on the training set and evaluate its performance on the validation set and finally test the model using the testing set.
 
 ### Chapter 9: Regularization (TODO !!)
 
