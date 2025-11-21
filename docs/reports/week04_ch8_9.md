@@ -73,7 +73,7 @@ regions, the model becomes flexible enough to fit the true function closely. As 
 
 - **Bias-Variance trade-off:** when a model is too simple (*low capacity*), it **ignores** useful information, and the error is composed mostly of that from bias ==> **Underfitting**<br>
 When a model is too complex, it **memorizes** non-general patterns, and the error is composed mostly of that from variance ==> **Overfitting**<br>
-In both cases the model does not generalize well on new unseen data. The ideal model aims to <u>minimize</u> both bias and variance. It lays in the sweet spot (not too simple, nor too complex). Achieving such a balance will yield the **minimum error**.
+In both cases the model does not generalize well on new unseen data. The ideal model aims to <u>minimize</u> both bias and variance. It lays in the sweet spot (not too simple, nor too complex) in between => Achieving such a balance will yield the **minimum error**
 
 ![Bias-Variance-trade-off](../images/PerfBiasVarianceTradeoff.svg)
 
@@ -85,7 +85,11 @@ In both cases the model does not generalize well on new unseen data. The ideal m
 
 - **Double-Descent:** (TODO !!)
 
-**<u>IV - Hyperparameters:</u>** (TODO !!)
+**<u>IV - Choosing hyperparameters:</u>**
+
+Hyperparameters consist of not only the number of hidden layers and the number of hidden units per layer, but also of the learning rate, the choice of the learning algorithm itself, the batch size and much more. The process of finding the best hyperparameters is called **hyperparameter search** or **neural architecture search** (when focusing on the network structure).
+
+Hyperparameters are typically chosen <u>empirically</u>: we train many models with different hyperparameters on the **same training dataset**, then measure their performance and retain the best model. However, measuring the performance **does not** happen on the test set, as this may produce good results on that specific set but the model does not generalize well on other new unseen data.
 
 ### Chapter 9: Regularization (TODO !!)
 
