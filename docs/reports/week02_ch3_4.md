@@ -22,7 +22,7 @@
   
     Other activation functions like **sigmoid** or **tanh**, for example, squash inputs into narrow ranges
     which makes their gradients very small for large input magnitudes ==> **Vanishing gradients** problem
-    [[Link]](https://www.geeksforgeeks.org/deep-learning/vanishing-and-exploding-gradients-problems-in-deep-learning/)
+    [(read more ...)](https://www.geeksforgeeks.org/deep-learning/vanishing-and-exploding-gradients-problems-in-deep-learning/)
   
     **ReLU** on the other hand allows gradients to flow efficiently through the different layers of the network.
     Its derivative of the output with respect to the input is always a constant **1**  for positive inputs.
