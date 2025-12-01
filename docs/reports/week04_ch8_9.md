@@ -2,7 +2,7 @@
 
 
 
-**Presenters:** Ben Halima Ibrahim, Zoghlami Fadi 
+**Presenters:** Ben Halima Ibrahim and Zoghlami Fadi 
 
 **Date:** 10.11.2025 
 
