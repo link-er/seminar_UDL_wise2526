@@ -39,18 +39,18 @@
     need to balance **Underfitting** and **Overfitting**.
 
     **Bias** :<br>
-       + Measures how far the model’s predictions are from the true function on average<br>
-       + It represents systematic error (how much the model “misses the mark”)<br>
-       + High bias ==> **Underfitting** (model too simple, can’t capture patterns)
+     - Measures how far the model’s predictions are from the true function on average<br>
+     - It represents systematic error (how much the model “misses the mark”)<br>
+     - High bias ==> **Underfitting** (model too simple, can’t capture patterns)
 
     **Variance** :<br>
-       + Measures how much the model’s predictions vary if we train it on different datasets drawn from the same distribution<br>
-       + High variance means the model memorizes noise instead of learning the underlying patterns<br>
-       + High variance ==> **Overfitting** (Model does not generalize well)
+     - Measures how much the model’s predictions vary if we train it on different datasets drawn from the same distribution<br>
+     - High variance means the model memorizes noise instead of learning the underlying patterns<br>
+     - High variance ==> **Overfitting** (Model does not generalize well)
 
     **The Tradeoff** :<br>
-       + Simple Network (*Low complexity*): if Bias **High** and Variance **Low** ==> **Underfitting**<br>
-       + Complex Network (*High complexity*): if Bias **Low** and Variance **High** ==> **Overfitting**
+     - Simple Network (*Low complexity*): if Bias **High** and Variance **Low** ==> **Underfitting**<br>
+     - Complex Network (*High complexity*): if Bias **Low** and Variance **High** ==> **Overfitting**
  
     ![Bias-Variance tradeoff](../images/Bias-Variance-Tradeoff.jpg)
   
