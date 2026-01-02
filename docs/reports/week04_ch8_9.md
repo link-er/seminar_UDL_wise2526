@@ -91,8 +91,85 @@ Hyperparameters consist of not only the number of hidden layers and the number o
 
 Hyperparameters are typically chosen <u>empirically</u>: we train many models with different hyperparameters on the **same training dataset**, then measure their performance and retain the best model. However, measuring the performance **does not** happen on the test set, as this may produce good results on only that specific set but the model does not generalize well on other new unseen data. Instead, we use a third dataset called the **validation set**. That means, for each choice of hyperparameters we train our model on the training set and evaluate its performance on the validation set and finally test the model using the testing set.
 
-### Chapter 9: Regularization (TODO !!)
+### Chapter 9: Regularization (TODOs left add missing formulas& figures & further improvements)
+1. **Introduction: Why Regularization Is Needed**
 
+Modern neural networks often have very high capacity, meaning they can fit training data extremely well. However, good performance on training data does not necessarily imply good performance on unseen data. This phenomenon, known as **overfitting**, occurs when a model learns not only the underlying structure of the data but also the noise present in the training set.
+
+The main objective of regularization is therefore to improve generalization, that is, to reduce the gap between training and testing performance. Instead of allowing the model to fit the training data arbitrarily well, regularization introduces constraints or biases that encourage simpler, more robust solutions.
+
+Several regularization techniques are presented, ranging from explicit penalties added to the loss function to implicit effects arising from optimization, as well as data- and model-based approaches such as dropout,  ensembling, and data augmentation...
+
+1. **Explicit Regularization**
+   
+Explicit regularization consists of modifying the loss function by adding an extra term that penalizes undesirable parameter values. Formally, instead of minimizing only the data loss, we minimize:
+
+where 𝑔(𝜙) is the regularization term, often designed to penalize large weights and λ controls the strength of the penalty.
+
+1.1 **Visual effect**
+
+This figure illustrates three landscapes: the first losslanscape is a highly complex surface with many local minima. the second figure (Regularization only) a simple, bowl-shaped surface centered near zero. when both are combined: we get a **smoother** surface with **fewer minima** and a shifted global minimum.
+
+This visualization highlights how regularization simplifies the optimization landscape and guides the solution toward more stable parameter values.
+
+1.2 **Probabilistic Interpretation of Regularization**
+Regularization can also be understood from a probabilistic perspective. When training neural networks using maximum likelihood estimation, we aim to maximize:
+
+Introducing a regularization term is equivalent to assuming a prior distribution over the parameters. This leads to:
+
+Taking the negative logarithm shows that:
+
+For example, assuming a zero-mean Gaussian prior on the parameters results in **L2 regularization**, which penalizes large weights. This interpretation provides a principled justification for regularization as a way of encoding prior beliefs about reasonable parameter values.
+
+2. **Implicit Regularization**
+2.1 **Implicit Regularization in Gradient Descent**
+Unlike explicit regularization, implicit regularization does not modify the loss function directly. Instead, it arises from the optimization process itself.
+
+In theory, continuous gradient flow updates parameters smoothly. In practice, however, gradient descent uses finite step sizes, which causes the optimization trajectory to deviate from the ideal continuous path.(traectory figure + eplanation)
+
+This deviation can be mathematically interpreted as minimizing a modified loss function:
+
+The additional term penalizes regions where the gradient norm is large, meaning steep parts of the loss surface. As a result, gradient descent tends to favor flatter minima, which are known to generalize better. This phenomenon also explains why, in some cases, larger learning rates lead to improved generalization, as they strengthen this implicit regularization effect. (figure)
+
+2.2 **Implicit Regularization in Stochastic Gradient Descent (SGD)**
+
+When using stochastic gradient descent, gradients are computed using mini-batches rather than the full dataset. This introduces randomness into the optimization process.
+
+The effective loss function minimized by SGD includes an additional term:
+
+This term corresponds to the variance of gradients across mini-batches.
+Each mini-batch gives a slightly different gradient direction. if one mini-batch points one way, and another batch points the opposite way ⇒ poor generalization.
+if all batches roughly agree, that means the model fits everything reasonably well ⇒  better generalization.
+meaning SGD implicitly favors solutions where all batches agree on the gradient direction, indicating a more uniform fit across the dataset.
+
+This provides a possible explanation for why SGD often generalizes better than full-batch gradient descent, and why smaller batch sizes can further improve performance.
+
+3.**Early Stopping**
+Early stopping is one of the simplest and most effective regularization techniques. During training, the model initially learns the general structure of the data. However, as training continues, it may start fitting noise.
+(figure)
+In the early stages, the model output closely follows the true underlying function. With prolonged training, the model becomes increasingly complex and overfits the noisy training points.
+
+By monitoring the validation loss and stopping training when it stops improving, early stopping effectively limits model complexity. This technique has been shown to behave similarly to L2 regularization, as it prevents weights from growing too large.
+
+
+4.**Ensembling**
+Ensembling improves generalization by combining the predictions of multiple models. Instead of relying on a single trained network, the final prediction is obtained by averaging outputs or pre-softmax activations; Each individual model may overfit in a slightly different way. By averaging their predictions, random fluctuations and noise are reduced, leading to lower variance and improved performance.
+Common ensembling strategies include:
+  -Training models with different random initializations
+  -Bagging (bootstrap aggregating)
+  -Using different architectures or hyperparameters
+
+5.**Dropout**
+Dropout is a regularization technique where, during training, a random subset of neurons is deactivated at each iteration.
+(figure)
+
+By preventing neurons from relying too strongly on specific other neurons (co-adaptation), dropout forces the network to learn more robust, distributed representations. Over many iterations, sharp irregularities in the learned function are smoothed out.(figure)
+
+At test time, all neurons are active, and the weights are scaled to account for the missing activations during training.
+
+8. Noise Injection 9.transferlearning 10. data augmentaion
+
+   
 ## Discussion Notes
 
 ### Measuring performance
