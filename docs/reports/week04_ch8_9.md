@@ -103,37 +103,55 @@ Several regularization techniques are presented, ranging from explicit penalties
 1. **Explicit Regularization**
    
 Explicit regularization modifies the training objective by adding a penalty term that discourages certain parameter configurations, most commonly those involving large weight values. The optimization problem becomes: 
+
  ![1](../images/regularization/regularization%201.png)
+ 
 Here, ℓ𝑖(𝑥𝑖,𝑦𝑖) represents the data loss, 𝑔(𝜙) is a regularization function, and 𝜆 controls the strength of the penalty. A common choice is L2 regularization, where 𝑔(𝜙)=∥𝜙∥^2
 
 The intuition behind explicit regularization is that large weights tend to produce highly sensitive models, where small changes in the input can lead to large changes in the output. By penalizing large parameter values, the optimization process must balance two competing objectives: fitting the training data accurately and keeping the model parameters within a reasonable range. As 𝜆 increases, the model is increasingly encouraged to favor simpler parameter configurations, even if this slightly increases training error.
 
 1.1 **Loss Landscape Interpretation**
+
 ![2](../images/regularization/regularization%202.png)
+
 A useful way to understand explicit regularization is through loss landscapes. The original loss surface may contain many sharp minima corresponding to highly specialized solutions that fit the training data very closely. The regularization term typically has a smooth, convex shape centered around zero. When the two are combined, the resulting loss surface becomes smoother and often shifts the location of the minimum toward flatter regions. These flatter minima are generally associated with better generalization, as they indicate solutions that are less sensitive to small changes in the parameters.
 
 1.2 **Probabilistic Interpretation of Regularization**
 Regularization can also be interpreted within a probabilistic framework. Training a neural network using standard loss functions corresponds to maximizing the likelihood of the observed data:
+
 ![3](../images/regularization/regularization%203.png)
+
 Introducing a regularization term is equivalent to assuming a prior distribution over the parameters. This leads to:
+
 ![4](../images/regularization/regularization%204.png)
+
 Taking the negative logarithm reveals that the regularization term corresponds to the negative log-prior. For example, penalizing large weights is equivalent to assuming that parameters are more likely to be close to zero than extremely large in magnitude. This interpretation provides a principled justification for regularization and clarifies the role of the hyperparameter 𝜆 as a trade-off between fitting the data and enforcing prior assumptions.
 
 2. **Implicit Regularization**
 2.1 ** Gradient Descent**
+   
 ![5](../images/regularization/regularization%205.png)
+
 Interestingly, regularization effects can arise even when no explicit penalty is added to the loss function. Gradient descent, when implemented with a finite step size 𝛼, does not follow the exact continuous trajectory implied by gradient flow. Instead, parameters are updated discretely:
+
 ![6](../images/regularization/regularization%206.png)
+
 This discretization causes the optimization path to deviate from the continuous trajectory. It can be shown that gradient descent effectively minimizes a modified loss function:
+
 ![7](../images/regularization/regularization%207.png)
+
 The additional term penalizes regions where the gradient norm is large, meaning steep parts of the loss surface. As a result, gradient descent tends to favor flatter minima, which are known to generalize better. This phenomenon also explains why, in some cases, larger learning rates lead to improved generalization, as they strengthen this implicit regularization effect.
+
 ![8](../images/regularization/regularization%208.png)
+
 2.2 **Implicit Regularization in Stochastic Gradient Descent (SGD)**
 
 Stochastic gradient descent introduces an additional source of implicit regularization through randomness. Because gradients are computed using mini-batches, each update is only an approximation of the true gradient over the entire dataset. Different mini-batches can produce slightly different gradient directions.
 
 The effective loss minimized by SGD can be written as:
-![8](../images/regularization/regularization%208.png)
+
+![9](../images/regularization/regularization%209.png)
+
 This term corresponds to the variance of gradients across mini-batches.
 Each mini-batch gives a slightly different gradient direction. if one mini-batch points one way, and another batch points the opposite way ⇒ poor generalization.
 if all batches roughly agree, that means the model fits everything reasonably well ⇒  better generalization.
@@ -143,7 +161,9 @@ Consequently, SGD tends to favor parameter configurations where gradients are co
 
 3.**Early Stopping**
 Early stopping is a simple yet powerful regularization technique based on monitoring model performance during training. Initially, training reduces both training and validation error as the model learns the general structure of the data. After a certain point, continued training primarily improves performance on the training set while degrading performance on the validation set.
-![9](../images/regularization/regularization%209.png)
+
+![10](../images/regularization/regularization%2010.png)
+
 In the early stages, the model output closely follows the true underlying function. With prolonged training, the model becomes increasingly complex and overfits the noisy training points.
 
 By monitoring the validation loss and stopping training when it stops improving, early stopping effectively limits model complexity. This technique has been shown to behave similarly to L2 regularization, as it prevents weights from growing too large.
@@ -158,13 +178,18 @@ Common ensembling strategies include:
 
 5.**Dropout**
 Dropout introduces regularization by randomly deactivating neurons during training. This prevents the network from relying too heavily on specific activations and forces it to distribute information across multiple pathways.
-![10](../images/regularization/regularization%2010.png)
+
+![11](../images/regularization/regularization%2011.png)
 
 By preventing neurons from relying too strongly on specific other neurons (co-adaptation), dropout forces the network to learn more robust, distributed representations. Over many iterations, sharp irregularities in the learned function are smoothed out.
-![11](../images/regularization/regularization%2011.png)
+
+![12](../images/regularization/regularization%2012.png)
+
 8. **Noise Injection**
 Adding noise during training is another way to encourage robustness. Noise can be applied to inputs, parameters, or labels.
-![12](../images/regularization/regularization%2012.png)
+
+![13](../images/regularization/regularization%2013.png)
+
 Adding noise forces the model to perform well despite small perturbations, discouraging overfitting. Input noise teaches invariance to irrelevant variations, weight noise encourages stability under parameter perturbations, and label smoothing prevents the model from becoming overly confident.
 
 9.**transferlearning**
