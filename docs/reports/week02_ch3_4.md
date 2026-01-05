@@ -69,7 +69,11 @@
     This means they can achieve strong performance without having to drastically increase the number of parameters,
     which makes them **more efficient** than wide shallow networks ==> **Parameter efficiency**
 
-- **What does folding the input space actually mean ?** (TODO)
+- **What does folding the input space actually mean ?**
+
+  folding the iput space can be seen as applying a nonlinear transformation that helps make complex patterns much       simpler and separable; meaning, wraping, bending or stretching (...) the input space so that same label points        cluster and lie together in a region that is easier to separate rather than these points being far apart or hard to   separate from other points in the original space.
+
+  ![folding](../images/folding.png)
 
 
 
