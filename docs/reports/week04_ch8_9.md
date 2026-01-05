@@ -91,8 +91,8 @@ Hyperparameters consist of not only the number of hidden layers and the number o
 
 Hyperparameters are typically chosen <u>empirically</u>: we train many models with different hyperparameters on the **same training dataset**, then measure their performance and retain the best model. However, measuring the performance **does not** happen on the test set, as this may produce good results on only that specific set but the model does not generalize well on other new unseen data. Instead, we use a third dataset called the **validation set**. That means, for each choice of hyperparameters we train our model on the training set and evaluate its performance on the validation set and finally test the model using the testing set.
 
-### Chapter 9: Regularization (TODOs left add missing formulas& figures & further improvements ;80% complete)
-1. **Introduction: Why Regularization Is Needed**
+### Chapter 9: Regularization 
+**Introduction: Why Regularization Is Needed**
 
 Neural networks are powerful function approximators, capable of learning highly complex relationships from data. However, this expressive power can easily become a drawback. When a model has many parameters, it can fit the training data extremely closely, including random fluctuations and noise. While this often leads to very low training error, it does not necessarily translate into good performance on unseen data. This phenomenon is known as overfitting.
 
@@ -117,6 +117,7 @@ The intuition behind explicit regularization is that large weights tend to produ
 A useful way to understand explicit regularization is through loss landscapes. The original loss surface may contain many sharp minima corresponding to highly specialized solutions that fit the training data very closely. The regularization term typically has a smooth, convex shape centered around zero. When the two are combined, the resulting loss surface becomes smoother and often shifts the location of the minimum toward flatter regions. These flatter minima are generally associated with better generalization, as they indicate solutions that are less sensitive to small changes in the parameters.
 
 1.2 **Probabilistic Interpretation of Regularization**
+
 Regularization can also be interpreted within a probabilistic framework. Training a neural network using standard loss functions corresponds to maximizing the likelihood of the observed data:
 
 ![3](../images/regularization/regularization%203.png)
@@ -125,18 +126,19 @@ Introducing a regularization term is equivalent to assuming a prior distribution
 
 ![4](../images/regularization/regularization%204.png)
 
-Taking the negative logarithm reveals that the regularization term corresponds to the negative log-prior. For example, penalizing large weights is equivalent to assuming that parameters are more likely to be close to zero than extremely large in magnitude. This interpretation provides a principled justification for regularization and clarifies the role of the hyperparameter 𝜆 as a trade-off between fitting the data and enforcing prior assumptions.
+Taking the negative logarithm reveals that the regularization term corresponds to the **negative log-prior**. For example, penalizing large weights (L2) is equivalent to assuming that parameters are more likely to be close to zero than extremely large in magnitude. This interpretation provides a principled justification for regularization and clarifies the role of the hyperparameter 𝜆 as a trade-off between fitting the data and enforcing prior assumptions.
 
 2. **Implicit Regularization**
+   
 2.1 ** Gradient Descent**
    
 ![5](../images/regularization/regularization%205.png)
 
-Interestingly, regularization effects can arise even when no explicit penalty is added to the loss function. Gradient descent, when implemented with a finite step size 𝛼, does not follow the exact continuous trajectory implied by gradient flow. Instead, parameters are updated discretely:
+Interestingly, regularization effects can arise even when no explicit penalty is added to the loss function. Gradient descent (cyan trajectory), when implemented with a finite step size 𝛼, does not follow the exact continuous trajectory (gray trajectory) implied by gradient flow. Instead, parameters are updated discretely:
 
 ![6](../images/regularization/regularization%206.png)
 
-This discretization causes the optimization path to deviate from the continuous trajectory. It can be shown that gradient descent effectively minimizes a modified loss function:
+When adding regularization term to the continuous path, it causes the optimization path to deviate from it's current trajectory to the same gray one. It can be shown that gradient descent effectively minimizes a **modified loss function** similar to an explicit regularization case (c). mathematically, this can be shown as :
 
 ![7](../images/regularization/regularization%207.png)
 
@@ -152,7 +154,7 @@ The effective loss minimized by SGD can be written as:
 
 ![9](../images/regularization/regularization%209.png)
 
-This term corresponds to the variance of gradients across mini-batches.
+The new additional term corresponds to the variance of gradients across mini-batches.
 Each mini-batch gives a slightly different gradient direction. if one mini-batch points one way, and another batch points the opposite way ⇒ poor generalization.
 if all batches roughly agree, that means the model fits everything reasonably well ⇒  better generalization.
 meaning SGD implicitly favors solutions where all batches agree on the gradient direction, indicating a more uniform fit across the dataset.
@@ -160,16 +162,18 @@ meaning SGD implicitly favors solutions where all batches agree on the gradient 
 Consequently, SGD tends to favor parameter configurations where gradients are consistent across batches, meaning the model fits all parts of the data reasonably well rather than fitting some examples extremely well at the expense of others. This provides insight into why smaller batch sizes often lead to better generalization and why SGD frequently outperforms full-batch gradient descent in practice.
 
 3.**Early Stopping**
+
 Early stopping is a simple yet powerful regularization technique based on monitoring model performance during training. Initially, training reduces both training and validation error as the model learns the general structure of the data. After a certain point, continued training primarily improves performance on the training set while degrading performance on the validation set.
 
 ![10](../images/regularization/regularization%2010.png)
 
-In the early stages, the model output closely follows the true underlying function. With prolonged training, the model becomes increasingly complex and overfits the noisy training points.
+In the early stages, the model output closely follows the true underlying function. With prolonged training, the model becomes increasingly complex and overfits the noisy training points (e & f).
 
 By monitoring the validation loss and stopping training when it stops improving, early stopping effectively limits model complexity. This technique has been shown to behave similarly to L2 regularization, as it prevents weights from growing too large.
 
 
 4.**Ensembling**
+
 Ensembling improves generalization by combining the predictions of multiple models. Instead of relying on a single trained network, the final prediction is obtained by averaging outputs or pre-softmax activations; Each individual model may overfit in a slightly different way. By averaging their predictions, random fluctuations and noise are reduced and individual errors tend to cancel out.
 Common ensembling strategies include:
   -Training models with different random initializations
@@ -177,15 +181,17 @@ Common ensembling strategies include:
   -Using different architectures or hyperparameters
 
 5.**Dropout**
+
 Dropout introduces regularization by randomly deactivating neurons during training. This prevents the network from relying too heavily on specific activations and forces it to distribute information across multiple pathways.
 
 ![11](../images/regularization/regularization%2011.png)
 
-By preventing neurons from relying too strongly on specific other neurons (co-adaptation), dropout forces the network to learn more robust, distributed representations. Over many iterations, sharp irregularities in the learned function are smoothed out.
+By preventing neurons from relying too strongly on specific other neurons (co-adaptation), dropout forces the network to learn more robust, distributed representations. Over many iterations, sharp irregularities or undesirable kink (b) in the learned function are smoothed out.
 
 ![12](../images/regularization/regularization%2012.png)
 
 8. **Noise Injection**
+
 Adding noise during training is another way to encourage robustness. Noise can be applied to inputs, parameters, or labels.
 
 ![13](../images/regularization/regularization%2013.png)
@@ -193,10 +199,12 @@ Adding noise during training is another way to encourage robustness. Noise can b
 Adding noise forces the model to perform well despite small perturbations, discouraging overfitting. Input noise teaches invariance to irrelevant variations, weight noise encourages stability under parameter perturbations, and label smoothing prevents the model from becoming overly confident.
 
 9.**transferlearning**
+
 Higher-level regularization strategies rely on sharing information across tasks or data variations. Transfer learning allows a model to reuse representations learned from a large related dataset, reducing the need to learn everything from scratch, which is particularly useful when labeled data is scarce.
 
-Multi-task learning trains a single model on several related tasks simultaneously, encouraging shared representations that capture common structure. 
- 10. data augmentaion
+Multi-task learning trains a single model on several related tasks simultaneously, encouraging shared representations that capture common structure.
+
+10. **data augmentaion**
  
 Data augmentation increases the effective size of the training dataset by applying label-preserving transformations to existing samples. Common transformations include flipping, rotating, cropping, or adding color variations. By exposing the model to a wider range of inputs, data augmentation teaches invariance to irrelevant variations and significantly reduces overfitting.
    
