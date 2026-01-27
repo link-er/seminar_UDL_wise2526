@@ -71,9 +71,9 @@
 
 - **What does folding the input space actually mean ?**
 
-  folding the iput space can be seen as applying a nonlinear transformation that helps make complex patterns much       simpler and separable; meaning, wraping, bending or stretching (...) the input space so that same label points        cluster and lie together in a region that is easier to separate rather than these points being far apart or hard to   separate from other points in the original space.
+Folding the input space can be seen as applying a nonlinear transformation that helps make complex patterns much simpler and separable; meaning, wraping, bending or stretching (...) the input space so that same label points cluster and lie together in a region that is easier to separate rather than these points being far apart or hard to   separate from other points in the original space.
 
-  ![folding](../images/folding.png)
+![folding](../images/folding.png)
 
 
 
