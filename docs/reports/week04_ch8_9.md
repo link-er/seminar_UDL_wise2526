@@ -91,6 +91,8 @@ In both cases the model does not generalize well on new unseen data. The ideal m
 
 <u>The Second Descent:</u> Surprisingly, increasing capacity beyond this threshold causes the test error to decrease again, often reaching a lower error than the previous "optimal" point. This is because larger models tend to find smoother solutions that generalize better.
 
+![Double-descent](../images/double-descent.png)
+
 **<u>IV - Choosing hyperparameters:</u>**
 
 Hyperparameters consist of not only the number of hidden layers and the number of hidden units per layer, but also of the learning rate, the choice of the learning algorithm itself, the batch size and much more. The process of finding the best hyperparameters is called **hyperparameter search** or **neural architecture search** (when focusing on the network structure).
