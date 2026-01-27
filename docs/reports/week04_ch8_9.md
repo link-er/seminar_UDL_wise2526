@@ -100,7 +100,7 @@ Regularization addresses this issue by limiting the effective complexity of the 
 
 Several regularization techniques are presented, ranging from explicit penalties added to the loss function to implicit effects arising from optimization, as well as data- and model-based approaches such as dropout,  ensembling, and data augmentation...
 
-1. **Explicit Regularization**
+**1. Explicit Regularization**
    
 Explicit regularization modifies the training objective by adding a penalty term that discourages certain parameter configurations, most commonly those involving large weight values. The optimization problem becomes: 
 
@@ -110,13 +110,13 @@ Here, ℓ𝑖(𝑥𝑖,𝑦𝑖) represents the data loss, 𝑔(𝜙) is a regul
 
 The intuition behind explicit regularization is that large weights tend to produce highly sensitive models, where small changes in the input can lead to large changes in the output. By penalizing large parameter values, the optimization process must balance two competing objectives: fitting the training data accurately and keeping the model parameters within a reasonable range. As 𝜆 increases, the model is increasingly encouraged to favor simpler parameter configurations, even if this slightly increases training error.
 
-1.1 **Loss Landscape Interpretation**
+**1.1 Loss Landscape Interpretation**
 
 ![2](../images/regularization/regularization%202.png)
 
 A useful way to understand explicit regularization is through loss landscapes. The original loss surface may contain many sharp minima corresponding to highly specialized solutions that fit the training data very closely. The regularization term typically has a smooth, convex shape centered around zero. When the two are combined, the resulting loss surface becomes smoother and often shifts the location of the minimum toward flatter regions. These flatter minima are generally associated with better generalization, as they indicate solutions that are less sensitive to small changes in the parameters.
 
-1.2 **Probabilistic Interpretation of Regularization**
+**1.2 Probabilistic Interpretation of Regularization**
 
 Regularization can also be interpreted within a probabilistic framework. Training a neural network using standard loss functions corresponds to maximizing the likelihood of the observed data:
 
@@ -128,9 +128,9 @@ Introducing a regularization term is equivalent to assuming a prior distribution
 
 Taking the negative logarithm reveals that the regularization term corresponds to the **negative log-prior**. For example, penalizing large weights (L2) is equivalent to assuming that parameters are more likely to be close to zero than extremely large in magnitude. This interpretation provides a principled justification for regularization and clarifies the role of the hyperparameter 𝜆 as a trade-off between fitting the data and enforcing prior assumptions.
 
-2. **Implicit Regularization**
+**2. Implicit Regularization**
    
-2.1 **Gradient Descent**
+**2.1 Gradient Descent**
    
 ![5](../images/regularization/regularization%205.png)
 
@@ -146,7 +146,7 @@ The additional term penalizes regions where the gradient norm is large, meaning 
 
 ![8](../images/regularization/regularization%208.png)
 
-2.2 **Implicit Regularization in Stochastic Gradient Descent (SGD)**
+**2.2 Implicit Regularization in Stochastic Gradient Descent (SGD)**
 
 Stochastic gradient descent introduces an additional source of implicit regularization through randomness. Because gradients are computed using mini-batches, each update is only an approximation of the true gradient over the entire dataset. Different mini-batches can produce slightly different gradient directions.
 
