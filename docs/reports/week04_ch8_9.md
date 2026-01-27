@@ -83,8 +83,13 @@ In both cases the model does not generalize well on new unseen data. The ideal m
 | **Optimal** | Moderate | Moderate | Best generalization |
 | **Overfitting** | Low | High | Poor test performance |
 
-- **Double-Descent:**
-  
+- **Double descent:** in classical machine learning, increasing the model complexity follows a U-shaped curve: test error decreases as bias drops, but eventually increases as the model overfits to noise (**high variance**). However, modern deep networks often exhibit **double descent**:
+
+<u>The First Descent:</u> Error drops as the model learns the underlying function.
+
+<u>The Interpolation Threshold:</u> As capacity increases, the model reaches a point where it can exactly fit (interpolate) the training data, leading to zero training error. At this threshold, the test error typically peaks because the model is highly sensitive to training noise.
+
+<u>The Second Descent:</u> Surprisingly, increasing capacity beyond this threshold causes the test error to decrease again, often reaching a lower error than the previous "optimal" point. This is because larger models tend to find smoother solutions that generalize better.
 
 **<u>IV - Choosing hyperparameters:</u>**
 
