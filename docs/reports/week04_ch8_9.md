@@ -130,7 +130,7 @@ Taking the negative logarithm reveals that the regularization term corresponds t
 
 2. **Implicit Regularization**
    
-2.1 ** Gradient Descent**
+2.1 **Gradient Descent**
    
 ![5](../images/regularization/regularization%205.png)
 
@@ -161,7 +161,7 @@ meaning SGD implicitly favors solutions where all batches agree on the gradient 
 
 Consequently, SGD tends to favor parameter configurations where gradients are consistent across batches, meaning the model fits all parts of the data reasonably well rather than fitting some examples extremely well at the expense of others. This provides insight into why smaller batch sizes often lead to better generalization and why SGD frequently outperforms full-batch gradient descent in practice.
 
-3.**Early Stopping**
+3. **Early Stopping**
 
 Early stopping is a simple yet powerful regularization technique based on monitoring model performance during training. Initially, training reduces both training and validation error as the model learns the general structure of the data. After a certain point, continued training primarily improves performance on the training set while degrading performance on the validation set.
 
@@ -172,7 +172,7 @@ In the early stages, the model output closely follows the true underlying functi
 By monitoring the validation loss and stopping training when it stops improving, early stopping effectively limits model complexity. This technique has been shown to behave similarly to L2 regularization, as it prevents weights from growing too large.
 
 
-4.**Ensembling**
+4. **Ensembling**
 
 Ensembling improves generalization by combining the predictions of multiple models. Instead of relying on a single trained network, the final prediction is obtained by averaging outputs or pre-softmax activations; Each individual model may overfit in a slightly different way. By averaging their predictions, random fluctuations and noise are reduced and individual errors tend to cancel out.
 Common ensembling strategies include:
@@ -180,7 +180,7 @@ Common ensembling strategies include:
   -Bagging (bootstrap aggregating)
   -Using different architectures or hyperparameters
 
-5.**Dropout**
+5. **Dropout**
 
 Dropout introduces regularization by randomly deactivating neurons during training. This prevents the network from relying too heavily on specific activations and forces it to distribute information across multiple pathways.
 
@@ -198,15 +198,16 @@ Adding noise during training is another way to encourage robustness. Noise can b
 
 Adding noise forces the model to perform well despite small perturbations, discouraging overfitting. Input noise teaches invariance to irrelevant variations, weight noise encourages stability under parameter perturbations, and label smoothing prevents the model from becoming overly confident.
 
-9.**transferlearning**
+9. **Transferlearning**
 
 Higher-level regularization strategies rely on sharing information across tasks or data variations. Transfer learning allows a model to reuse representations learned from a large related dataset, reducing the need to learn everything from scratch, which is particularly useful when labeled data is scarce.
 
 Multi-task learning trains a single model on several related tasks simultaneously, encouraging shared representations that capture common structure.
 
-10. **data augmentaion**
+10. **Data Augmentaion**
  
 Data augmentation increases the effective size of the training dataset by applying label-preserving transformations to existing samples. Common transformations include flipping, rotating, cropping, or adding color variations. By exposing the model to a wider range of inputs, data augmentation teaches invariance to irrelevant variations and significantly reduces overfitting.
+
    
 ## Discussion Notes
 
