@@ -73,7 +73,7 @@ regions, the model becomes flexible enough to fit the true function closely. As 
 
 - **Bias-Variance trade-off:** when a model is too simple (*low capacity*), it **ignores** useful information, and the error is composed mostly of that from bias ==> **Underfitting**<br>
 When a model is too complex, it **memorizes** non-general patterns, and the error is composed mostly of that from variance ==> **Overfitting**<br>
-In both cases the model does not generalize well on new unseen data. The ideal model aims to <u>minimize</u> both bias and variance. It lays in the sweet spot (not too simple, nor too complex) in between => Achieving such a balance will yield the **minimum error**
+In both cases the model does not generalize well on new unseen data. The ideal model aims to <u>minimize</u> both bias and variance. It lays in the sweet-spot in between (not too simple, nor too complex) => Achieving such a balance will yield the **minimum error**
 
 ![Bias-Variance-trade-off](../images/PerfBiasVarianceTradeoff.svg)
 
@@ -83,7 +83,8 @@ In both cases the model does not generalize well on new unseen data. The ideal m
 | **Optimal** | Moderate | Moderate | Best generalization |
 | **Overfitting** | Low | High | Poor test performance |
 
-- **Double-Descent:** (TODO !!)
+- **Double-Descent:**
+  
 
 **<u>IV - Choosing hyperparameters:</u>**
 
