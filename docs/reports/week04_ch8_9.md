@@ -299,3 +299,4 @@ Balance between model complexity and error:
 - A Modern Take on the Bias-Variance Tradeoff in Neural Networks [[Link]](https://arxiv.org/pdf/1810.08591)
 - The Bias-Variance trade-off [[Link]](https://mlu-explain.github.io/bias-variance/)
 - The Importance of Data Splitting [[Link]](https://mlu-explain.github.io/train-test-validation/)
+- Deep Double Descent: where bigger models and more data hurt [[Link]](https://arxiv.org/pdf/1912.02292)
