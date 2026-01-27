@@ -49,7 +49,7 @@ When a neural network fails to generalize well, there are mainly three sources o
 
  ![Noise-Bias-Varinace](../images/PerfNoiseBiasVariance.svg)
 
-- **Mathematical formulation of test error:** (TODO !!)
+- **Mathematical formulation of test error:**
 
  ![Noise-Bias-Variance-Equation](../images/Noise-Bias-Variance-Equation.png)
 
