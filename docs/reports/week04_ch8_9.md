@@ -93,6 +93,8 @@ In both cases the model does not generalize well on new unseen data. The ideal m
 
 ![Double-descent](../images/double-descent.png)
 
+This phenomenon is illustrated in the book using the MNIST-1D dataset, where the test error continues to decrease even after the model has reached the capacity to memorize the dataset. While classical theory suggests that highly overparameterized models **should generalize poorly**, the double descent curve shows that larger models can actually lead to **better performance**, challenging traditional notions of overfitting.
+
 **<u>IV - Choosing hyperparameters:</u>**
 
 Hyperparameters consist of not only the number of hidden layers and the number of hidden units per layer, but also of the learning rate, the choice of the learning algorithm itself, the batch size and much more. The process of finding the best hyperparameters is called **hyperparameter search** or **neural architecture search** (when focusing on the network structure).
