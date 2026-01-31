@@ -31,8 +31,8 @@ models, since the dimensionality does not have to change, while the model can st
 positional and token information.
 
 ### How big are modern Large Language Models (LLMs)?
-Modern LLMs can have in the hundreds of billion parameters. Some of them even exceed the mark of a trillion parameters. For 
-example [Metas Llama 4 Maverick](https://ai.meta.com/blog/llama-4-multimodal-intelligence/) has a total of 400 Billion 
+Modern LLMs can have way more than a hundred billion parameters. Some of them even exceed the mark of a trillion parameters. For 
+example [Metas Llama 4 Maverick](https://ai.meta.com/blog/llama-4-multimodal-intelligence/) has a total of 400 billion 
 parameters. In order to run this model with 16-bit floating point precision, you would need around 800 GB of GPU RAM.
 
 ### Challenges of transformers in computer vision tasks

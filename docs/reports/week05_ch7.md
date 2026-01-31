@@ -16,7 +16,7 @@ The derivative of the loss function with respect to a certain parameter $\omega$
 to this specific parameter would affect the output of the loss function. Based on that and the structure of a simple 
 neural network as shown in Fig. 1 we can make the following two observations on how to compute the derivatives 
 of the loss function with respect to the network's parameters.
-1. The weights are always multiplied with the activations of a hidden unit and then added to the preactivations of the 
+1. The weights are always multiplied with the activations of a hidden unit and then added to the pre-activations of the 
 following layer (blue arrow in Fig. 1). Therefore, we will save the activations during the computation of the loss 
 function's output, which is also called the forward pass.
 2. Small changes to weights or biases in early layers can cause a ripple effect through the whole network and 
@@ -120,7 +120,7 @@ since standard derivatives, like addition, multiplication, and so forth, are alr
 ### Initializing weights
 Now that we fully understand how to optimize our networks from a certain starting point in the loss landscape, we still 
 need to find a strategy to choose reasonable starting points. Hence, we need to find a reasonable way on how to 
-initialize the networks weights and biases. One simple option would be to just randomly choose a single number, maybe 
+initialize the network's weights and biases. One simple option would be to just randomly choose a single number, maybe 
 even zero, and set all weights and biases to this specific number. Doing this, however, would lead to symmetries in the 
 optimization process, and we would likely not be able to utilize the whole network's capacity. Another more practical 
 approach would be to sample each weight independently of a standard normal distribution. Even though this is way closer 
