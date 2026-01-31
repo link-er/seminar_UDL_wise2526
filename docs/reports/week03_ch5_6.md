@@ -136,3 +136,34 @@ $$\hat{\phi} = \underset{\phi}{\mathrm{argmin}} \left[ -\sum_{i=1}^{I} \log[Pr(y
 - Advantages:
     - Smooth trajectory
     - Can converge at minima
+
+## Discussion Notes
+
+- **Why does the presence of noise contributes to better finding the solution?**
+    
+    Noise in gradient-based optimization, e.g. through stochastic gradient descent, helps the optimizer escape local minima.
+    Noise promotes exploration of the parameter space and often leads to solutions with better generalization.
+
+- **What is a full-batch gradient descent?**
+
+    Full-batch gradient descent computes the gradient of the loss function using the entire training dataset for each update.
+    While this yields stable and deterministic updates, it is computationally expensive and lack stochasticity that can 
+    improve optimization in non-convex problems. 
+
+- **What is the role of the learning rate, and how does it influence the behavior of gradient descent?**
+  
+    The learning rate controls the step size of parameter updates in the direction of the negative gradient.
+    Small learning rates lead to slow but stable convergence, whereas large learning rates accelerate training but may
+    cause instability or divergence.   
+
+- **What is the advantage of computing both parameters $\mu$ and $\sigma^2$?**
+
+    Predicting both $\mu$ and $\sigma^2$ allows the model to quantify uncertainty in its predictions. 
+    This is particularly important in probabilistic and Bayesian settings.
+
+- **When should Cross Entropy Loss be used, and when is Least Squares Loss more appropriate?**
+
+    Least Squares Loss is best suited for regression tasks under a Gaussian noise assumption.
+    Cross Entropy Loss is more appropriate for classification tasks, as it models probability distributions and directly
+    optimizes class likelihoods. 
+    
