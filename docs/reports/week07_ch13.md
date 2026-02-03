@@ -1,9 +1,9 @@
 # Report - Week 7, Chapter 13: Graph Neural Networks
 
-Presenter: Nhat Vu Minh
-Date: 08.12.2025
-Discussion Lead: Aisaiah Pellecer
-Report by: Aisaiah Pellecer
+**Presentation Date:** 08.12.2025\
+**Presenter:** Nhat Vu Minh\
+**Discussion Lead:** Aisaiah Pellecer\
+**Report by:** Aisaiah Pellecer
 
 ## Graph Representation
 
