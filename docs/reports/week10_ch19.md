@@ -106,3 +106,31 @@ Reduces variance by replacing $G_t$ with a lower-variance estimate.
     $$A(s_t, a_t) = \underbrace{r_t + \gamma v(s_{t+1}, \phi)}_{\text{TD Target}} - \underbrace{v(s_t, \phi)}_{\text{Baseline}}$$
 
 ## Discussion Notes
+
+**What is reward?**
+
+- A reward indicates how good or bad an action is after leaving a state. An example is collecting some coin in video games such as the Super mario games.
+
+**How can penalties be integrated?**
+
+- Penalties can be included by assigning negative values to the rewards.
+
+**What problems occur when the reward are noisy?**
+
+- For Q-Learning, when the policy selects the action with the maximum state-action value, this will often be overestimated due to noise. This leads to overreaction and can result in a chain reaction, which causes
+  even more overreactions.
+
+**In which order the actor and critic is performed?**
+
+- In general, the actor are critic are executed in an alternating order. However, in the book it is not specified, how often it is performed.
+
+**How does the baseline need to be understood?**
+
+- The baseline is used to reduce the variance, which is typically high in policy gradient methods.
+
+**When the optimal state values are known, what is the relation to the optimal policy?**
+
+- The optimal policy can be inferred by choosing the next action with the highest state value. This is a greedy approach.
+
+## References
+- [Understand Deep Learning](https://udlbook.github.io/udlbook/)
