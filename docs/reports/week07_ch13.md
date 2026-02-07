@@ -1,3 +1,15 @@
+# Report - Week 7, Chapter 13: Graph Neural Networks
+
+**Presentation Date:** 08.12.2025\
+**Presenter:** Minh Nhat Vu\
+**Discussion Lead:** Aisaiah Pellecer\
+**Report by:** Minh Nhat Vu
+
+## Summary
+
+### Motivation
+Graph Neural Networks are neural architectures that process graphs. However, this is a challenging task because graphs can have a variable topology and can be very large and densely connected. In addition, only a single graph is available, which prevents the usual training on many data examples and testing with new data.
+
 ### Graph representation
 Graphs consist of a set of nodes $N$ and edges $E$ that connect pairs of nodes and represent real-world objects such as road networks or electrical circuits. They can be directed or undirected and may also be multigraphs, allowing multiple edges between two nodes.
 
