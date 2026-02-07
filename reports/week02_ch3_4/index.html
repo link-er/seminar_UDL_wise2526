@@ -1,0 +1,1047 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://link-er.github.io/seminar_UDL_wise2526/reports/week02_ch3_4/">
+      
+      
+        <link rel="prev" href="../week01_kickoff/">
+      
+      
+        <link rel="next" href="../week03_ch5_6/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Week 02 - Seminar "Understanding Deep Learning" WS25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#report-week-02-shallow-deep-neural-networks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-header__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Seminar "Understanding Deep Learning" WS25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 02
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-nav__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Seminar "Understanding Deep Learning" WS25/26
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reports
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01_kickoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 02
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03_ch5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04_ch8_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05_ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 05
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06_ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 06
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07_ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 07
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08_ch10_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 08
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09_ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 09
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10_ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="report-week-02-shallow-deep-neural-networks">Report – Week 02: Shallow &amp; Deep Neural Networks</h1>
+<p><strong>Presenter:</strong> Antonia Ponikarov  </p>
+<p><strong>Date:</strong> 27.10.2025  </p>
+<h2 id="summary">Summary</h2>
+<p>Linear models are limited to representing simple, linear relationships between input $x$ and output $y$. 
+Consequently, certain problems cannot be solved using linear models, e.g. the XOR problem, which takes two binary 
+inputs and produces a binary output. 
+The output of the operation equals $1$ if and only if the two inputs differ. 
+The corresponding data points are not linearly separable, meaning that there is no way to draw a single line to 
+separate the two output classes.
+That example illustrates the necessity of neural networks, which introduce nonlinearity through activation functions.
+By composing multiple linear transformations with nonlinear activations, such models can represent flexible, 
+piecewise-linear functions and are therefore capable of modeling more complex mappings relationships.</p>
+<p>A shallow neural network can be defined as a function $\textbf{y} = \textbf{f} [\textbf{x}, \mathbf{\phi]}$,
+parameterized by $\mathbf{\phi}$, which maps multivariate inputs $\textbf{x}$ to multivariate outputs $\textbf{y}$. </p>
+<p><strong>Basic structure:</strong> \
+Consider the example of a network with a scalar input $x$ and a scalar output $y$, parameterized by ten parameters 
+$\mathbf{\phi} = {\phi_0, \phi_1, \phi_2, \phi_3, \theta_{10}, \theta_{11}, \theta_{20}, \theta_{21}, \theta_{30}, \theta_{31}}.$</p>
+<figure style="text-align: center;">
+    <img src="../images/week02_ch3_4/figure3.4a.png" alt="Shallow Network" width="40%" />
+</figure>
+
+<p>The corresponding input/output mapping is given by </p>
+<p>$$y = f[x,\mathbf{\phi}] = \phi_0 + \phi_1 \text{a} [\theta_{10} + \theta_{11} x] + \phi_2 \text{a} [\theta_{20} + \theta_{21} x]+ \phi_3 \text{a} [\theta_{30} + \theta_{31} x].$$</p>
+<p>Interpretation of Parameters:
+- $\theta_{ij}$: parameters defining the linear transformations (intercept and slope) applied to the input
+- $\text{a}[\cdot]$: nonlinear activation function
+- $\phi_1, \phi_2, \phi_3$: output weights used to combine the activations
+- $\phi_0$: offset/bias, which controls the height of the final function</p>
+<p>As illustrated in the figure above, a shallow network consists of a single hidden layer, which in this example contains 
+three hidden units, also referred to as neurons. 
+Each hidden unit computes a small linear function of the input, such as $\theta_{10} + \theta_{11} x$.
+Those intermediate values are known as pre-activations.
+An activation function is then applied to each pre-activation, for example $h_1=\text{a}[\theta_{10} + \theta_{11} x]$. 
+Finally, the network output is obtained by linearly combining all activations using the output weights and adding a bias.</p>
+<div style="display: flex; gap: 10px;">
+    <img src="../images/week02_ch3_4/figure3.3ghi.png" alt="joints after activation functions" width="60%" />
+    <img src="../images/week02_ch3_4/figure3.3j.png" alt="linear regions" width="25%"/>
+</div>
+
+<p>The positions at which the hidden-unit contributions cross zero become the "joints" in the final output function. 
+At these locations, the slope of the output changes, resulting in a piecewise-linear structure.
+Each hidden unit contributes at most one such joint. 
+Consequently, a shallow network with three hidden units can represent a function consisting up to four linear regions.</p>
+<p>In the case of multivariate inputs and outputs, each hidden unit receives a weighted combination of all input 
+dimensions rather than a single scalar input.
+Similary, each output $y_j$ is formed as a weighted combination of all activations:</p>
+<p>$$\displaystyle y_j = \phi_{j0} + \sum_{d = 1}^{D} \phi_{jd}h_d$$ </p>
+<p>where the hidden-unit activations are defined as:</p>
+<p>$$\displaystyle h_d = \text{a}\left[\theta_{d0}+\sum_{i=1}^{D_i}{\theta_{di}x_i}\right],$$</p>
+<p>with $\mathbf{x} \in \mathbb{R}^{D_i}$ denoting the input vector and $\textbf{y} \in \mathbb{R}^{D_j}$ the output vector.</p>
+<p><strong>Activation Functions:</strong> \
+Neural Networks combine linear operations, such as weighted sums, with nonlinear activations. 
+Without nonlinear activations, the composition of multiple layers would collapse to a single linear mapping, regardless 
+of network depth. 
+Activation functions therefore play a crucial role by introducing nonlinearity at each hidden unit, enabling neural 
+networks to model nonlinear input/output mappings.</p>
+<p>The most commonly used activation function is the Rectrified Linear Unit (ReLU). 
+It keeps positive values unchanged while mapping negative values to zero, thereby inducing a piecewise-linear behavior. 
+ReLU activations enable efficient optimization and often lead to sparse activations.
+However, ReLU also suffers from the so-called "dying ReLU problem": 
+if a neuron's pre-activation remains negative, its outputs and gradient become zero, preventing further updates of the 
+corresponding weights during training.</p>
+<figure style="text-align: center;">
+    <img src="../images/week02_ch3_4/figure3.1.png" alt="ReLU activation function" width="25%" />
+</figure>
+
+<p>This issue can be resolved by using variants such as the Leaky ReLU function, which assigns a small non-zero slope to 
+negative input values and thus preserves gradient flow. 
+Other activation functions, including the sigmoid, tanh, and Exponential Linear Unit (ELU), have also been proposed to 
+address limitations of standard ReLU activations. </p>
+<p><strong>Universal Approximation Theorem:</strong>\
+The Universal Approximation Theorem states that, for any continuous function, there exists a shallow network that can 
+approximate this function arbitrarily well, provided a sufficient number of hidden units is available. 
+When ReLU activation functions are used, each hidden unit adds at most one joint to the resulting function. 
+Consequently, a shallow network with $D$ hidden units can represent a piecewise-linear function consisting of at most 
+$D$ joints and therefore at most $D+1$ linear regions. 
+Increasing the number of hidden units increases the number of linear regions.
+As the number of linear regions grows, each region covers a small section of the input domain, enabling the network to 
+more closely match the shape of the true underlying continuous function. 
+However, this theorem proves existence, not efficiency: 
+while shallow networks are theoretically capable of approximating arbitrary continuous functions, they may need a large
+amount of hidden units to do so accurately for complex functions.</p>
+<figure style="text-align: center;">
+    <img src="../images/week02_ch3_4/figure3.5.png" alt="Approximation of a 1D function" width="75%" />
+</figure>
+
+<p><strong>Limitations of Shallow Networks:</strong> \
+Approximating complex functions, especially in high dimensional input spaces, typically requires an impractically large 
+number of hidden units. 
+As a result, the number of parameters grows rapidly with both the input dimension and hidden units, leading to poor 
+parameter inefficiency. 
+In contrast, depth enables far more regions with fewer parameters, allowing deep neural networks to achieve the same 
+expressivity.</p>
+<figure style="text-align: center;">
+    <img src="../images/week02_ch3_4/figure3.9.png" alt="comparison number of parameters" width="75%" />
+</figure>
+
+<p><strong>Deep Networks:</strong>\
+In contrast to shallow networks, which contain only a single hidden layer, deep neural networks consist of multiple 
+hidden layer stacked sequentially. </p>
+<div style="display: flex; gap: 10px">
+    <img src="../images/week02_ch3_4/figure4.1abc.png" alt="Composing two single-layer networks" width="50%" />
+    <img src="../images/week02_ch3_4/figure4.3.png" alt="Folding" height="100%" width="40%" />
+</div>
+
+<p>Composing two single-layer networks, each with three hidden units (see figure above on the left-hand side), results in 
+the first network to create three alternating slopes, mapping the input domain into the interval $[-1, 1]$. 
+The second network then applies a similar transformation to this intermediate representation. 
+Through this repeated folding and reuse of input ranges, the composed network generates nine linear regions instead of 
+three, as illustrated in the figure above on the right-hand side.</p>
+<p>When two shallow networks are combined, it essentially yields a special case of a deep network with two hidden layers. </p>
+<figure style="text-align: center;">
+    <img src="../images/week02_ch3_4/figure4.4.png" alt="Deep Network" width="50%" />
+</figure>
+
+<p>The hidden units $h_1$, $h_2$ and $h_3$ in the first hidden layer are computed as usual by forming linear functions of 
+the input and applying the ReLU activation function on them. 
+Their outputs then serve as inputs to the second hidden layer, where the pre-activation values are computed by taking 
+three new linear functions of these hidden units. 
+At this point, there are three piecewise linear functions where the joints between linear regions are at the same 
+places (see figure a)-c) below).
+Applying a second ReLU activation to each function, introduces additional joints (see figure d)-f) below), further 
+increasing the number of linear regions.
+After weightening the functions and combining them together, the final output is a linear combination of these hidden 
+units:</p>
+<p>$$y' = \phi'_0 + \phi'_1h'_1 + \phi'_2 h'_2 + \phi'_3 h'_3.$$</p>
+<figure style="text-align: center;">
+    <img src="../images/week02_ch3_4/figure4.5abcdef.png" alt="deep network computation" width="60%" />
+</figure>
+
+<p><strong>General Form - Matrix Notation:</strong>\
+A deep neural network with $K$ hidden layers can be compactly described as a sequence of linear transformations 
+alternating with nonlinear activation functions:</p>
+<p>$$
+\begin{aligned}
+\mathbf{h}<em>1 &amp;= \mathbf{a}[\mathbf{\beta}_0 + \mathbf{\Omega}_0 \mathbf{x}] \\
+\mathbf{h}_2 &amp;= \mathbf{a}[\mathbf{\beta}_1 + \mathbf{\Omega}_1 \mathbf{h}_1] \\
+\mathbf{h}_3 &amp;= \mathbf{a}[\mathbf{\beta}_2 + \mathbf{\Omega}_2 \mathbf{h}_2] \\
+&amp;\vdots \\
+\mathbf{h}_K &amp;= \mathbf{a}[\mathbf{\beta}</em>{K-1} + \mathbf{\Omega}<em>{K-1} \mathbf{h}</em>{K-1}] \\
+\mathbf{y} &amp;= \mathbf{\beta}_K + \mathbf{\Omega}_K \mathbf{h}_K
+\end{aligned}
+$$</p>
+<figure style="text-align: center;">
+    <img src="../images/week02_ch3_4/figure4.6.png" alt="general form deep network" width="60%">
+</figure>
+
+<ul>
+<li>$\mathbf{h}_k$ : vector of hidden units at layer $k$</li>
+<li>$\mathbf{\beta}_k$ : vector of biases that contributes to layer $k+1$</li>
+<li>$\mathbf{\Omega}_k$ : weights that are applied to $k^{\text{th}}$ layer and contributes to $(k + 1)^{\text{th}}$ - layer</li>
+</ul>
+<p><strong>Depth vs. Width:</strong>\
+To sum up, both shallow and deep networks can approximate any continuous function given enough capacity.
+However, depth provides a significantly more parameter-efficient means of achieving expressive power.
+A shallow network with one input, one output and $D &gt; 2$ hidden units can represent at most $D + 1$ linear regions 
+using $3D + 1$ parameters. 
+In contrast, a deep network with $K$ hidden layers of width $D &gt; 2$ can create up to $(D+1)^k$ linear regions with a 
+comparable parameter budget (exactly $3D + 1 + (K-1)D(D+1)$ parameters). 
+The exponential growth in the number of linear regions explains why deep networks are particularly well suited for
+modeling complex, structured data such as images. 
+In practice, deep networks achieve state-of-the-art performance across most tasks.</p>
+<h2 id="discussion-notes">Discussion Notes</h2>
+<ul>
+<li>
+<p><strong>Why is ReLU the most used activation function in practice ?</strong></p>
+<p><strong>ReLU</strong> is the most widely used activation function in practice because it offers
+a simple yet powerful balance between computational efficiency and effective gradient propagation.</p>
+<p>Other activation functions like <strong>sigmoid</strong> or <strong>tanh</strong>, for example, squash inputs into narrow ranges
+which makes their gradients very small for large input magnitudes ==&gt; <strong>Vanishing gradients</strong> problem
+<a href="https://www.geeksforgeeks.org/deep-learning/vanishing-and-exploding-gradients-problems-in-deep-learning/">(read more ...)</a></p>
+<p><strong>ReLU</strong> on the other hand allows gradients to flow efficiently through the different layers of the network.
+Its derivative of the output with respect to the input is always a constant <strong>1</strong>  for positive inputs.
+This helps to avoid the saturation problem (derivative becomes close to zero) for large input data that
+the derivatives of the <strong>sigmoid</strong> activation function suffer from.</p>
+<p>Another advantage of using <strong>ReLU</strong> is that it is extremely simple to compute (we just compare with zero and clip negative inputs)
+and has no exponentials or divisions like <strong>sigmoid</strong> or <strong>tanh</strong>.</p>
+</li>
+<li>
+<p><strong>Bias-Variance tradeoff :</strong></p>
+<p>When training our Neural Network/Model, our goal is to predict well on <strong>new unseen</strong> data.
+The <strong>Bias-Variance tradeoff</strong> describes how the model complexity affects prediction error, and why we
+need to balance <strong>Underfitting</strong> and <strong>Overfitting</strong>.</p>
+<p><strong>Bias</strong> :<br>
+ - Measures how far the model’s predictions are from the true function on average<br>
+ - It represents systematic error (how much the model “misses the mark”)<br>
+ - High bias ==&gt; <strong>Underfitting</strong> (model too simple, can’t capture patterns)</p>
+<p><strong>Variance</strong> :<br>
+ - Measures how much the model’s predictions vary if we train it on different datasets drawn from the same distribution<br>
+ - High variance means the model memorizes noise instead of learning the underlying patterns<br>
+ - High variance ==&gt; <strong>Overfitting</strong> (Model does not generalize well)</p>
+<p><strong>The Tradeoff</strong> :<br>
+ - Simple Network (<em>Low complexity</em>): if Bias <strong>High</strong> and Variance <strong>Low</strong> ==&gt; <strong>Underfitting</strong><br>
+ - Complex Network (<em>High complexity</em>): if Bias <strong>Low</strong> and Variance <strong>High</strong> ==&gt; <strong>Overfitting</strong></p>
+<p><img alt="Bias-Variance tradeoff" src="../../images/Bias-Variance-Tradeoff.jpg" /></p>
+</li>
+<li>
+<p><strong>What are the advantages of using Deep Neural Networks over Shallow ones ?</strong></p>
+<p>Deep Neural Networks are generally preferred over Shallow Neural Networks because they can model
+<strong>complex patterns in data</strong> more effectively thanks to their depth. While shallow networks can
+theoretically approximate any function, they would need an exponentially larger number of neurons
+to achieve the same level of performance ==&gt; <strong>Higher representation power</strong></p>
+<p>Deep Neural Networks tend also to <strong>generalize better</strong> on new unseen data. Shallow networks, on the
+other hand, often underfit and fail to capture the underlying structure of complex datasets ==&gt; <strong>Better generalization</strong></p>
+<p>Deep networks use their layers to build on previously learned features, allowing for the <strong>reuse of information</strong>.
+This means they can achieve strong performance without having to drastically increase the number of parameters,
+which makes them <strong>more efficient</strong> than wide shallow networks ==&gt; <strong>Parameter efficiency</strong></p>
+</li>
+<li>
+<p><strong>What does folding the input space actually mean ?</strong></p>
+</li>
+</ul>
+<p>Folding the input space can be seen as applying a nonlinear transformation that helps make complex patterns much simpler and separable; meaning, wraping, bending or stretching (...) the input space so that same label points cluster and lie together in a region that is easier to separate rather than these points being far apart or hard to   separate from other points in the original space.</p>
+<p><img alt="folding" src="../../images/folding.png" /></p>
+<h2 id="references">References</h2>
+<ul>
+<li>
+<p>Deep Learning using Rectified Linear Units (ReLU) <a href="https://arxiv.org/pdf/1803.08375">[Link]</a></p>
+</li>
+<li>
+<p>A Modern Take on the Bias-Variance Tradeoff in Neural Networks <a href="https://arxiv.org/pdf/1810.08591">[Link]</a></p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

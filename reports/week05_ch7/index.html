@@ -1,0 +1,1260 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://link-er.github.io/seminar_UDL_wise2526/reports/week05_ch7/">
+      
+      
+        <link rel="prev" href="../week04_ch8_9/">
+      
+      
+        <link rel="next" href="../week06_ch12/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Week 05 - Seminar "Understanding Deep Learning" WS25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#report-week-5-gradients-initialization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-header__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Seminar "Understanding Deep Learning" WS25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 05
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-nav__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Seminar "Understanding Deep Learning" WS25/26
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reports
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01_kickoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02_ch3_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03_ch5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04_ch8_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 05
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 05
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-toy-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A toy example
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A toy example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forward pass:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backward-pass-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backward pass #1:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backward-pass-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backward pass #2:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithmic-differentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithmic differentiation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializing-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initializing weights
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initializing weights">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exploding-and-vanishing-gradient-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exploding and vanishing gradient problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#he-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HE Initialization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-for-backward-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initialization for backward pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06_ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 06
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07_ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 07
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08_ch10_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 08
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09_ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 09
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10_ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-toy-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A toy example
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A toy example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#forward-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Forward pass:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backward-pass-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backward pass #1:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backward-pass-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backward pass #2:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithmic-differentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithmic differentiation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initializing-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initializing weights
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initializing weights">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exploding-and-vanishing-gradient-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exploding and vanishing gradient problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#he-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HE Initialization
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialization-for-backward-pass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initialization for backward pass
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="report-week-5-gradients-initialization">Report – Week 5: Gradients &amp; Initialization</h1>
+<p><strong>Presenter:</strong> Noah Gövert  </p>
+<p><strong>Date:</strong> 17.11.2025 </p>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>Now that we know how neural networks are structured, how we can apply loss functions to them, and how to minimize 
+functions based on derivatives using methods like gradient descent, we will take a look at how to efficiently compute 
+the derivatives of our neural network with the applied loss function with respect to its parameters. This will allow us 
+to finally optimize our nets.</p>
+<h3 id="observations">Observations</h3>
+<p>The derivative of the loss function with respect to a certain parameter $\omega$ basically describes how a tiny change 
+to this specific parameter would affect the output of the loss function. Based on that and the structure of a simple 
+neural network as shown in Fig. 1 we can make the following two observations on how to compute the derivatives 
+of the loss function with respect to the network's parameters.
+1. The weights are always multiplied with the activations of a hidden unit and then added to the pre-activations of the 
+following layer (blue arrow in Fig. 1). Therefore, we will save the activations during the computation of the loss 
+function's output, which is also called the forward pass.
+2. Small changes to weights or biases in early layers can cause a ripple effect through the whole network and 
+completely alter the result. So in order to know how the change of a weight affects the loss function, we also need to 
+know how all the subsequent layers change the output. We will quantize this effect of the subsequent layers as the 
+upstream gradient and reuse this gradient to compute the upstream gradient for the previous layer and so forth. This is 
+done during the so-called backward pass.</p>
+<p>So in summary, we will compute the gradient by strategically saving and reusing important intermediate values during
+the forward and backward pass.
+<img alt="Fig.1: Example Network" src="../../images/example-network.png" /></p>
+<h3 id="a-toy-example">A toy example</h3>
+<p>In order to apply this intuition about gradient computation in neural networks we will now consider a simple 3 layer 
+network $f[x,\phi]$ with least squares loss and a layer width of one. The $\sin$ function, the $\exp$ function and the 
+$\cos$ function can be considered the activation functions.
+$$
+\ell_i[f[x,\phi],y_i]=[\beta_3+\omega_3\cdot\cos[\beta_2+\omega_2\cdot\exp[\beta_1+\omega_1\cdot\sin[\beta_0+\omega_0\cdot x]]]-y_i]^2
+$$</p>
+<h4 id="forward-pass">Forward pass:</h4>
+<p>We can rewrite the loss function as the following chain of computations, where $f_i$ denotes the preactivations and 
+$h_i$ the activations:
+$$
+\begin{aligned}
+f_0 &amp;= \beta_0 + \omega_0 \cdot x \
+h_1 &amp;= \sin[f_0] \
+f_1 &amp;= \beta_1 + \omega_1 \cdot h_1 \
+h_2 &amp;= \exp[f_1] \
+f_2 &amp;= \beta_2 + \omega_2 \cdot h_2 \
+h_3 &amp;= \cos[f_2] \
+f_3 &amp;= \beta_3 + \omega_3 \cdot h_3 \
+\ell_i &amp;= [f_3 - y_i]^2
+\end{aligned}
+$$
+In the forward pass we will then calculate the loss and save all the intermediate values from the chain of computations 
+above.</p>
+<h4 id="backward-pass-1">Backward pass #1:</h4>
+<p>Now we will compute the derivatives with respect to our intermediate values in reverse order. Later we will then reuse 
+these to calculate the derivatives with respect to our parameters.
+The first derivative is straightforward:
+$$
+\frac{\partial \ell_i}{\partial f_3} = 2(f_3 - y_i)
+$$
+We can then go on and reuse this derivative in order to compute the derivative of our loss function with respect to 
+$f_3$ using the chain rule:
+$$
+\frac{\partial \ell_i}{\partial h_3} = \frac{\partial f_3}{\partial h_3}\frac{\partial \ell_i}{\partial f_3}
+$$
+Then again, we can reuse the derivative computed above to calculate the derivative of the loss function with respect 
+to $f_2$. And just like that, by always reusing the previous derivative with the chain rule, we can progress through 
+the whole computation chain backwards until we get the derivative with respect to $f_0$. In the following computation 
+the part in braces is always already fully computed one step before:
+$$
+\begin{aligned}
+\frac{\partial \ell_i}{\partial f_2} &amp;= \frac{\partial h_3}{\partial f_2}(\frac{\partial f_3}{\partial h_3}\frac{\partial \ell_i}{\partial f_3}) \
+\frac{\partial \ell_i}{\partial h_2} &amp;= \frac{\partial f_2}{\partial h_2}(\frac{\partial h_3}{\partial f_2}\frac{\partial f_3}{\partial h_3}\frac{\partial \ell_i}{\partial f_3}) \
+\frac{\partial \ell_i}{\partial f_1} &amp;= \frac{\partial h_2}{\partial f_1}(\frac{\partial f_2}{\partial h_2}\frac{\partial h_3}{\partial f_2}\frac{\partial f_3}{\partial h_3}\frac{\partial \ell_i}{\partial f_3}) \
+\frac{\partial \ell_i}{\partial h_1} &amp;= \frac{\partial f_1}{\partial h_1}(\frac{\partial h_2}{\partial f_1}\frac{\partial f_2}{\partial h_2}\frac{\partial h_3}{\partial f_2}\frac{\partial f_3}{\partial h_3}\frac{\partial \ell_i}{\partial f_3}) \
+\frac{\partial \ell_i}{\partial f_0} &amp;= \frac{\partial h_1}{\partial f_0}(\frac{\partial f_1}{\partial h_1}\frac{\partial h_2}{\partial f_1}\frac{\partial f_2}{\partial h_2}\frac{\partial h_3}{\partial f_2}\frac{\partial f_3}{\partial h_3}\frac{\partial \ell_i}{\partial f_3}) \
+\end{aligned}
+$$</p>
+<h4 id="backward-pass-2">Backward pass #2:</h4>
+<p>Now that we computed all intermediate results and gradients in the forward and backward pass, we can finally compute 
+the derivatives with respect to our weights $\omega$ and biases $\beta$. This again can be done using the chain rule:
+$$
+\begin{aligned}
+\frac{\partial \ell_i}{\partial \omega_k} &amp;= \frac{\partial f_k}{\partial \omega_k}\frac{\partial \ell_i}{\partial f_k} \
+\frac{\partial \ell_i}{\partial \beta_k} &amp;= \frac{\partial f_k}{\partial \beta_k}\frac{\partial \ell_i}{\partial f_k}
+\end{aligned}
+$$
+Notice that the right-hand side is just the upstream gradient computed in the step before. And the left-hand side is
+easily computed:
+$$
+\begin{aligned}
+\frac{\partial f_k}{\partial \omega_k} &amp;= h_k \
+\frac{\partial f_k}{\partial \beta_k} &amp;= 1
+\end{aligned}
+$$
+With the exception for $k=0$:
+$$
+\frac{\partial f_k}{\partial \omega_k} = x_i
+$$</p>
+<p>This idea can also be extended to neural networks with a layer width of more than one. The central difference in that 
+case would be that all computations are then done with vectors and matrices instead of scalars, but the general process 
+remains the same.</p>
+<h3 id="algorithmic-differentiation">Algorithmic differentiation</h3>
+<p>The idea of treating formulas as a series of computations to then compute the derivatives of this formula with respect 
+to each parameter by just applying the chain rule over and over again can be generalized to computational graphs. As 
+long as a formula is transformable to a non-circular graph with the operators on its nodes, it is possible to 
+automatically compute the derivatives with respect to all parameters. However, the derivatives for the operators on the 
+graph's nodes have to be implemented beforehand. This leads to the practical advantage, that when creating neural 
+networks in modern frameworks like PyTorch and TensorFlow, it usually is not necessary to implement derivatives at all, 
+since standard derivatives, like addition, multiplication, and so forth, are already implemented by default.</p>
+<h3 id="initializing-weights">Initializing weights</h3>
+<p>Now that we fully understand how to optimize our networks from a certain starting point in the loss landscape, we still 
+need to find a strategy to choose reasonable starting points. Hence, we need to find a reasonable way on how to 
+initialize the network's weights and biases. One simple option would be to just randomly choose a single number, maybe 
+even zero, and set all weights and biases to this specific number. Doing this, however, would lead to symmetries in the 
+optimization process, and we would likely not be able to utilize the whole network's capacity. Another more practical 
+approach would be to sample each weight independently of a standard normal distribution. Even though this is way closer 
+to state-of-the-art weight sampling methods, it still leads to some problems.</p>
+<h4 id="exploding-and-vanishing-gradient-problem">Exploding and vanishing gradient problem</h4>
+<p>Assuming we have a neural network with ReLU activations, and we initialize our weights according to a standard normal 
+distribution with $\mu = 0$ and a really small variance $\sigma^2$. If we would now propagate inputs through this 
+layer, the average magnitude of the inputs for the next layer is likely smaller than the magnitude of the inputs of the 
+layer before, since all inputs got multiplied with really small numbers, and then even all values less than zero got 
+clipped by the ReLU function. If this happens consecutively in a lot of layers, the numbers might get so small that 
+usual floating point precision does not have the capacity to represent these numbers accurately anymore. Something 
+similar happens if we initialize our weights with a big variance, but in this case the magnitude of our values would 
+rise uncontrollably from layer to layer instead of shrink, since the layer inputs are always multiplied with really big 
+numbers.</p>
+<p>The problem even increases during optimization in the backward pass, since the gradients here also get multiplied with 
+the weight matrices, which leads to the so-called vanishing or exploding gradient problem. In Fig. 2 the development of
+magnitude from the intermediate values in the forward pass and the gradients is shown for a network with 50 hidden 
+layers, each with a width of 100 hidden units.
+<img alt="Fig. 2: Exploding and vanishing gradient problemn" src="../../images/exploding-gradient.png" /></p>
+<h4 id="he-initialization">HE Initialization</h4>
+<p>As explained before, we have to be very careful with initializing our weights for big neural networks. In this section 
+we will introduce an initialization method that samples weights from a standard normal distribution but adjusts the 
+variance for each layer with the goal of keeping the magnitude of the preactivations the same for each layer.</p>
+<p>We will find that the variance of pre activations $\sigma^2_{f'<em>i}$ in a subsequent layer in the forward pass of a 
+simple feedforward network with ReLU activations depends as follows on the variance of the weights $\sigma</em>\Omega^2$, 
+the variance of pre activations from its previous layer $\sigma_f^2$ and the number of hidden units $D_h$ in its 
+previous layer:
+$$
+\sigma^2_{f'<em>i} 
+= \frac{1}{2} D_h \, \sigma</em>\Omega^2 \, \sigma_f^2
+$$
+In order to keep the variance of pre-activations the same in both layers during the forward pass we can then just set 
+the sampling variance for our weights as follows:
+$$
+\sigma^2 = \frac{2}{D_h}
+$$</p>
+<h4 id="initialization-for-backward-pass">Initialization for backward pass</h4>
+<p>During the backward pass, a very similar argument can be made, with the main difference being that the weights are now 
+multiplied with the transposed weight matrices. So in order to avoid vanishing or exploding gradients, we would have to 
+divide by the dimensionality of the layer the weights feed into instead of the dimensionality of the layer the weights 
+come from. 
+$$
+\sigma^2 = \frac{2}{D_{h'}}
+$$
+This initialization method, however, is directly in conflict with our optimal initialization method for the forward pass, 
+if not all layers have the same size. One common option to tackle this problem is to just take the mean of both 
+methods.
+$$
+\sigma_\Omega^2 = \frac{4}{D_h + D_{h'}}
+$$</p>
+<hr />
+<h2 id="discussion-notes">Discussion Notes</h2>
+<p><strong>Q:</strong> Is there a difference between computing the gradient for the combined loss (like it is done in Pytorch) vs. computing it "point-wise"? \
+<strong>A:</strong> No, since mathematically there is no difference whether you differentiate first or you average first.</p>
+<p><strong>Q:</strong> How would you determine that your parameters were initialized poorly? \
+<strong>A:</strong> You either get an exploding gradient or vanishing gradient. An exploding gradient may be visible in the loss because the loss becomes very volatile. A vanishing gradient might make it look like the loss is not changing at all anymore.</p>
+<p><strong>Q:</strong> In theory, what would happen if we intialized all weights with identical values? \
+<strong>A:</strong> If all weights were the same, all the gradients would also be identical, meaning you would not be able to distinguish between neurons and the model could not describe anything useful.</p>
+<p><strong>Q:</strong> Regarding the formula for optimal initialization weights, where did the 2 come from? \
+<strong>A:</strong> The 2 originally came from the observation that the ReLU discards half the values for μ=0, meaning it also halves the variance from one layer to the next.</p>
+<p><strong>Q:</strong> What is the difference between static and dynamic computation graphs in ML frameworks (i.e. Tensorflow vs. Pytorch)? \
+<strong>A:</strong> In general, Tensorflow is faster, while Pytorch is more transparent, which is why researchers often use Pytorch. </p>
+<p><strong>Q:</strong> We heard that backpropagation saves a lot of computation when computing the gradients. Are there also costs/ disadvantages to this approach? \
+<strong>A:</strong> Since backpropagation saves many intermediate values for its next steps, it is not particularly memory efficient. There are approaches to cope with this, like only caching the most important values and re-computing other ones to save space, but it is always a space-time-tradeoff.</p>
+<p><strong>Q:</strong> The book said that one of the reasons that initialization is a potential problem is because of floating point precision. In theory, what would happen if we had infinite precision/ compute? \
+<strong>A:</strong> At this point, the question becomes "Can I find the global minimum from any starting point?", which should be possible with infinite compute.</p>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://udlbook.github.io/udlbook/">Understand Deep Learning</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
