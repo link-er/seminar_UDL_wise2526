@@ -1,0 +1,1643 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://link-er.github.io/seminar_UDL_wise2526/reports/week06_ch12/">
+      
+      
+        <link rel="prev" href="../week05_ch7/">
+      
+      
+        <link rel="next" href="../week07_ch13/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Week 06 - Seminar "Understanding Deep Learning" WS25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#report-week-06-transformers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-header__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Seminar "Understanding Deep Learning" WS25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 06
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-nav__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Seminar "Understanding Deep Learning" WS25/26
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reports
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01_kickoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02_ch3_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03_ch5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04_ch8_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05_ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 05
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 06
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 06
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Motivation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Self-Attention
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Self-Attention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-values-queries-and-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Values, queries and keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-attention-scores-and-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Attention scores and weights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-output-of-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Output of self-attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-important-extensions-of-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Important Extensions of Self-Attention
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Important Extensions of Self-Attention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-positional-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Positional encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-scaled-dot-product-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Scaled dot-product attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-multi-head-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Multi-head attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-transformers-for-nlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Transformers for NLP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Transformers for NLP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-tokenization-and-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Tokenization and embeddings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-encoder-only-model-bert-example-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Encoder-only model: BERT (example configuration)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-decoder-only-models-and-masked-attention-gpt-3-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Decoder-only Models and Masked Attention (GPT-3 style)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Decoder-only Models and Masked Attention (GPT-3 style)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-autoregressive-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Autoregressive objective
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-masked-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Masked self-attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-generating-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Generating text
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-encoderdecoder-transformers-and-cross-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Encoder–Decoder Transformers and Cross-Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Variants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discussion Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampling-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sampling Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attention-for-long-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attention for long sequences
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-are-positional-encodings-added-to-the-tokens-and-not-concatenated-with-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why are positional encodings added to the tokens and not concatenated with them?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-big-are-modern-large-language-models-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How big are modern Large Language Models (LLMs)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenges-of-transformers-in-computer-vision-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenges of transformers in computer vision tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07_ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 07
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08_ch10_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 08
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09_ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 09
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10_ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Motivation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Self-Attention
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Self-Attention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-values-queries-and-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Values, queries and keys
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-attention-scores-and-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Attention scores and weights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-output-of-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Output of self-attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-important-extensions-of-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Important Extensions of Self-Attention
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Important Extensions of Self-Attention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-positional-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Positional encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-scaled-dot-product-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Scaled dot-product attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-multi-head-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Multi-head attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-transformers-for-nlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Transformers for NLP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Transformers for NLP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-tokenization-and-embeddings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Tokenization and embeddings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-encoder-only-model-bert-example-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Encoder-only model: BERT (example configuration)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-decoder-only-models-and-masked-attention-gpt-3-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Decoder-only Models and Masked Attention (GPT-3 style)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Decoder-only Models and Masked Attention (GPT-3 style)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-autoregressive-objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Autoregressive objective
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-masked-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Masked self-attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-generating-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Generating text
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-encoderdecoder-transformers-and-cross-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Encoder–Decoder Transformers and Cross-Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Variants
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discussion Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampling-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sampling Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#attention-for-long-sequences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attention for long sequences
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-are-positional-encodings-added-to-the-tokens-and-not-concatenated-with-them" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why are positional encodings added to the tokens and not concatenated with them?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-big-are-modern-large-language-models-llms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How big are modern Large Language Models (LLMs)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenges-of-transformers-in-computer-vision-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Challenges of transformers in computer vision tasks
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="report-week-06-transformers">Report – Week 06: Transformers</h1>
+<p><strong>Presenter:</strong> Fadi Dalbah<br />
+<strong>Date:</strong> 01.12.2025  </p>
+<hr />
+<h2 id="summary">Summary</h2>
+<h3 id="1-motivation">1. Motivation</h3>
+<ul>
+<li><strong>Text as input</strong></li>
+<li>Texts can be <strong>very long</strong>.</li>
+<li><strong>Variable length</strong>: each text has a different number of inputs.</li>
+<li><strong>Ambiguity</strong>: the meaning of a word depends strongly on its context.</li>
+<li><strong>Goal:</strong> A mechanism that can flexibly relate <strong>any input to any other</strong> in the sequence and share parameters between similar inputs.</li>
+</ul>
+<h3 id="2-self-attention">2. Self-Attention</h3>
+<ul>
+<li>Think of self-attention as <strong>routing information</strong>:</li>
+<li>For each position, the model decides <strong>how much to take</strong> from each other position.</li>
+<li>$n^{th}$ output at position is the <strong>weighted sum</strong> of $N$ value vectors:</li>
+<li>Different outputs can use <strong>different weight distributions</strong>, i.e. focus on different parts of the sequence.</li>
+</ul>
+<h4 id="31-values-queries-and-keys">3.1 Values, queries and keys</h4>
+<ul>
+<li>Each input token embedding $x_m$ is linearly mapped to a <strong>value</strong>:
+  $$
+  v_m = \beta_v + \Omega_v x_m
+  $$</li>
+<li>The same input is also mapped to a <strong>query</strong> and a <strong>key</strong>:
+  $$
+  q_n = \beta_q + \Omega_q x_n
+  $$
+  $$
+  k_m = \beta_k + \Omega_k x_m
+  $$</li>
+</ul>
+<h4 id="32-attention-scores-and-weights">3.2 Attention scores and weights</h4>
+<ul>
+<li><strong>Similarity score</strong> between token $m$ and position $n$ via dot product:
+  $$
+  e_{mn} = k_m^T q_n
+  $$</li>
+<li>Convert scores into <strong>attention weights</strong> with a softmax over $m$:
+  $$
+  a[x_n, x_m] = \text{softmax}<em>m(e</em>{mn})
+  $$
+  $$
+  = \frac{\exp(e_{mn})}{\sum_{m'=1}^N \exp(e_{m'n})}
+  $$</li>
+</ul>
+<h4 id="33-output-of-self-attention">3.3 Output of self-attention</h4>
+<ul>
+<li><strong>Per position</strong> $n$:
+  $$
+  \text{sa}<em>n([x_1,\dots,x_N]) = \sum</em>{m=1}^N a[x_m, x_n] \, v_m
+  $$</li>
+<li><strong>Matrix notation</strong>:</li>
+<li>Compute:
+    $$
+    Q = \Beta_q1^T + \Omega_q X
+    $$
+    $$
+    K = \Beta_q1^T + \Omega_k X
+    $$
+    $$
+    V = \Beta_q1^T + \Omega_v X
+    $$</li>
+<li>Basic self-attention:
+    $$
+    \text{Sa}(X) = V \cdot \text{Softmax}(K^T Q)
+    $$</li>
+</ul>
+<h3 id="4-important-extensions-of-self-attention">4. Important Extensions of Self-Attention</h3>
+<h4 id="41-positional-encoding">4.1 Positional encoding</h4>
+<ul>
+<li>Self-attention alone is <strong>order-invariant</strong>.</li>
+<li>Add a <strong>positional encoding</strong> to each token:</li>
+<li>$p_n$ can be:</li>
+<li><strong>Absolute</strong> (depends on position index) <ul>
+<li><strong>Chosen</strong> or <strong>learned</strong>,</li>
+</ul>
+</li>
+<li><strong>Relative</strong> (depends on distances between positions),</li>
+</ul>
+<h4 id="42-scaled-dot-product-attention">4.2 Scaled dot-product attention</h4>
+<ul>
+<li>In high dimensions, dot products can become large.</li>
+<li>This can cause:</li>
+<li>Largest value dominates softmax,</li>
+<li>Small gradient changes → harder training.</li>
+<li>Solution: <strong>scale</strong> the scores by query dimension $\sqrt{D_q}$:
+  $$
+  \text{SA}(X) = V \cdot \text{Softmax}!\left(\frac{K^T Q}{\sqrt{D_q}}\right)
+  $$</li>
+</ul>
+<h4 id="43-multi-head-attention">4.3 Multi-head attention</h4>
+<ul>
+<li>Run <strong>multiple self-attentions in parallel</strong>:</li>
+<li>Each head $h$ has its own computation.</li>
+<li>Compute:
+    $$
+    Q_h = \Beta_{vh}1^T + \Omega_{kh} X
+    $$
+    $$
+    K_h = \Beta_{qh}1^T + \Omega_{kh} X
+    $$
+    $$
+    V_h = \Beta_{kh}1^T + \Omega_{kh} X
+    $$</li>
+<li>Concatenate and linearly transform:
+  $$
+  \text{Sa}_h(X) = V_h \cdot \text{Softmax}!\left(\frac{K^T_h Q_h}{\sqrt{D_q}}\right)
+  $$</li>
+<li>Can make network more robust to bad initializations</li>
+</ul>
+<h3 id="5-transformers-for-nlp">5. Transformers for NLP</h3>
+<h4 id="51-tokenization-and-embeddings">5.1 Tokenization and embeddings</h4>
+<ul>
+<li><strong>Tokenization</strong>:</li>
+<li>Split text into subword <strong>tokens</strong> from a fixed vocabulary.</li>
+<li><strong>Embedding</strong>:</li>
+<li>Each token index is mapped to a dense vector (word embedding).</li>
+</ul>
+<h4 id="52-encoder-only-model-bert-example-configuration">5.2 Encoder-only model: BERT (example configuration)</h4>
+<ul>
+<li>Input: full sentence → <strong>bidirectional</strong> self-attention.</li>
+<li>Typical configuration presented:</li>
+<li>Vocabulary: ~30 000 tokens.</li>
+<li>Embedding dimension: 1 024.</li>
+<li>24 transformer layers, each with 16 heads.</li>
+<li>Query/key/value projections: $64 \times 1\,024$ per head.</li>
+<li>Feed-forward hidden dimension: 4 096.</li>
+<li>≈ 340M parameters.</li>
+<li>For pretaining</li>
+<li>Inputs are converted to embeddings</li>
+<li>Passed through transformer layers</li>
+<li>Small fraction of tokens replaced with <code>&lt;mask&gt;</code> token</li>
+<li>Goal is to predict the right token</li>
+<li>For classification</li>
+<li><code>&lt;cls&gt;</code> token placed at the start of string</li>
+<li>Token mapped to a number</li>
+</ul>
+<h3 id="6-decoder-only-models-and-masked-attention-gpt-3-style">6. Decoder-only Models and Masked Attention (GPT-3 style)</h3>
+<h4 id="61-autoregressive-objective">6.1 Autoregressive objective</h4>
+<ul>
+<li>Model predicts the <strong>next token</strong>:
+  $$
+  Pr(t_1, t_2, \dots, t_N)
+  $$</li>
+<li>This defines a probability for the whole sequence:
+  $$
+  Pr(t_1, t_2, \dots, t_N) = Pr(t_1)\prod_{n=2}^N Pr(t_n \mid t_1, \dots, t_{n-1})
+  $$</li>
+</ul>
+<h4 id="62-masked-self-attention">6.2 Masked self-attention</h4>
+<ul>
+<li>During training, token at position $n$ must <strong>not see future tokens</strong>.</li>
+<li>Implemented by adding a <strong>mask matrix</strong></li>
+<li>Entries with $-\infty$ become <strong>0</strong> after softmax.</li>
+</ul>
+<h4 id="63-generating-text">6.3 Generating text</h4>
+<ul>
+<li>Start with a special <code>&lt;start&gt;</code> token.</li>
+<li>Repeatedly:</li>
+<li>Compute distribution over next token via masked self-attention and output layer.</li>
+<li>Sample or choose the most probable token.</li>
+<li>Append it to the sequence and feed back into the decoder.</li>
+<li>
+<p>Stop when <code>&lt;end&gt;</code> token is produced.</p>
+</li>
+<li>
+<p>Large decoder models support <strong>few-shot learning</strong>:</p>
+</li>
+<li>A few examples in the prompt are enough to perform a new task without changing the model parameters.</li>
+</ul>
+<h3 id="7-encoderdecoder-transformers-and-cross-attention">7. Encoder–Decoder Transformers and Cross-Attention</h3>
+<ul>
+<li><strong>Encoder</strong>:</li>
+<li>Processes source sentence, producing context representations.</li>
+<li><strong>Decoder</strong>:</li>
+<li>Uses:<ul>
+<li><strong>Masked self-attention</strong> over previous target tokens.</li>
+<li><strong>Cross-attention</strong> over encoder states:</li>
+<li>Queries $Q$ from decoder embeddings,</li>
+<li>Keys $K$ and values $V$ from encoder outputs $E$.</li>
+</ul>
+</li>
+<li>
+<p>Same scaled dot-product formula, just with <strong>different sources</strong> for $Q$ vs. $K, V$.</p>
+</li>
+<li>
+<p>Main application: <strong>machine translation</strong>.</p>
+</li>
+</ul>
+<h3 id="8-variants">8. Variants</h3>
+<ul>
+<li>Long-sequence transformers (efficient attention for long texts).</li>
+<li>Image transformer and ImageGPT (apply attention to image patches).</li>
+<li>Vision Transformer (ViT) and multi-scale ViT (hierarchical image representations).</li>
+<li>Many other adaptations to different data types and tasks.</li>
+</ul>
+<h2 id="discussion-notes">Discussion Notes</h2>
+<h3 id="sampling-methods">Sampling Methods</h3>
+<p>When generating text from a Large Language Model we always try to predict the most likely token given the preceding 
+text sequence. However, just outputting the token with the highest probability is not always the best option. For 
+example, in a scenario, where the cumulative probability for a group of words that points in a similar direction is 
+bigger than the cumulative probability for a group of words that points in a different direction, but the word with 
+the biggest associated probability is from the second group and thus would be sampled and lead the generation in a
+wrong direction. This problem is also already known in other fields, like in elections, as 
+<a href="https://en.wikipedia.org/wiki/Spoiler_effect">Spoiler effect</a>.</p>
+<p>A common solution to tackle this problem is <strong>Top-k sampling</strong>. Here, instead of just always outputting the token with 
+the highest probability, we sample from the k most likely tokens according to their probability. Another similar 
+approach would be <strong>Top-p sampling</strong>, where $p$ is a probability, and we sample from the tokens with the biggest 
+probability that cumulate to least $p$ of the total probability from all options. With for example 
+<strong>Beam search</strong> there are also different approaches that keep track of sequences with the highest probabilities, and 
+thus try to predict the optimal sequence of subsequent tokens.</p>
+<h3 id="attention-for-long-sequences">Attention for long sequences</h3>
+<p>In attention, each token interacts with every other token from the sequence. This leads to a quadratic complexity of the 
+attention mechanism, and thus the attention computation for very long sequences takes up a lot of resources. However, 
+there are some methods developed to tackle this problem. Most approaches sparsify the attention interaction matrix for 
+example through a convolutional structure (Fig. 1c-f). The tradeoff here, however, is that tokens can only interact 
+with some of the other tokens through the course of several subsequent layers. This problem can be partially tackled by 
+introducing some tokens that attend to all other tokens (Fig. 1g).
+<img alt="Fig.1: Types of sparse attention" src="../../images/sparse-attention.png" /></p>
+<h3 id="why-are-positional-encodings-added-to-the-tokens-and-not-concatenated-with-them">Why are positional encodings added to the tokens and not concatenated with them?</h3>
+<p>Adding positional encodings keeps the dimensionality of the model smaller and makes it easier to alter already existing 
+models, since the dimensionality does not have to change, while the model can still reasonably distinguish between 
+positional and token information.</p>
+<h3 id="how-big-are-modern-large-language-models-llms">How big are modern Large Language Models (LLMs)?</h3>
+<p>Modern LLMs can have way more than a hundred billion parameters. Some of them even exceed the mark of a trillion parameters. For 
+example <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/">Metas Llama 4 Maverick</a> has a total of 400 billion 
+parameters. In order to run this model with 16-bit floating point precision, you would need around 800 GB of GPU RAM.</p>
+<h3 id="challenges-of-transformers-in-computer-vision-tasks">Challenges of transformers in computer vision tasks</h3>
+<p>Images have a lot of pixels, which poses a problem, because the attention matrix grows quadratically with the number of 
+inputs. Also, convolutional networks are particularly well suited for the two-dimensional structure of images. However, 
+because of the massive number of training datapoints and the increase in compute resources transformer models have now 
+eclipsed the performance of convolutional networks in many computer vision tasks.</p>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://udlbook.github.io/udlbook/">Understand Deep Learning</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Spoiler_effect">Spoiler effect</a></li>
+<li><a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/">Metas Llama 4 Maverick</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

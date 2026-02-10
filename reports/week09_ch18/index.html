@@ -1,0 +1,895 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://link-er.github.io/seminar_UDL_wise2526/reports/week09_ch18/">
+      
+      
+        <link rel="prev" href="../week08_ch10_11/">
+      
+      
+        <link rel="next" href="../week10_ch19/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Week 09 - Seminar "Understanding Deep Learning" WS25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#report-week-09-diffusion-models" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-header__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Seminar "Understanding Deep Learning" WS25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 09
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-nav__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Seminar "Understanding Deep Learning" WS25/26
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reports
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01_kickoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02_ch3_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03_ch5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04_ch8_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05_ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 05
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06_ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 06
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07_ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 07
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08_ch10_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 08
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 09
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10_ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="report-week-09-diffusion-models">Report – Week 09: Diffusion Models</h1>
+<p><strong>Presenter:</strong> Alexander Semler</p>
+<p><strong>Date:</strong> 05.01.2026</p>
+<hr />
+<h1 id="presentation-summary">Presentation Summary</h1>
+<h2 id="overview">Overview</h2>
+<h3 id="diffusion-models-introduction">Diffusion Models: Introduction</h3>
+<p><strong>Core Idea:</strong> Generate new data by learning to reverse a gradual noise-addition process.</p>
+<p><strong>Encoder (Forward Process)</strong>
+- Maps input <strong>x</strong> through latent variables <strong>z₁, …, z_T</strong>
+- Gradually mixes data with noise
+- Pre-specified (no learning needed)</p>
+<p><strong>Decoder (Reverse Process)</strong>
+- Learned neural network
+- Removes noise at each stage
+- Passes data back through latent variables</p>
+<p><strong>Sampling:</strong> To generate an image, sample noise <strong>z_T</strong> ~ q(<strong>z_T</strong>) and pass through decoder.</p>
+<h3 id="notation-and-key-variables">Notation and Key Variables</h3>
+<p><strong>Data and Latent Variables</strong>
+- <strong>x</strong> — Original data example (e.g., an image)
+- <strong>z_t</strong> — Latent variable at diffusion step t
+  - t = 1, 2, …, T where T is the total number of steps
+  - All <strong>z_t</strong> have the same dimensionality as <strong>x</strong></p>
+<p><strong>Noise Parameters</strong>
+- <strong>ε_t</strong> — Random noise drawn from standard normal N(<strong>0</strong>, <strong>I</strong>)
+- <strong>β_t</strong> — Noise schedule parameter at step t
+  - Controls how much noise is added at each step
+  - β_t ∈ [0, 1] (typically small values, e.g., 0.0001 to 0.02)</p>
+<h2 id="encoder">Encoder</h2>
+<h3 id="forward-diffusion-process">Forward Diffusion Process</h3>
+<p><strong>Diffusion Step:</strong></p>
+<pre><code>z₁ = √(1-β₁) · x + √β₁ · ε₁
+z_t = √(1-β_t) · z_{t-1} + √β_t · ε_t    ∀ t ∈ 2,…,T
+</code></pre>
+<p>(Equation 18.1)</p>
+<p><strong>Diffusion Step (probabilistic):</strong></p>
+<pre><code>q(z₁|x) = Norm[√(1-β₁) · x, β₁I]
+q(z_t|z_{t-1}) = Norm[√(1-β_t) · z_{t-1}, β_tI]
+</code></pre>
+<p>(Equation 18.2)</p>
+<p><strong>Joint distribution of all latent variables:</strong></p>
+<pre><code>q(z_{1…T}|x) = q(z₁|x) ∏_{t=2}^T q(z_t|z_{t-1})
+</code></pre>
+<p>(Equation 18.3)</p>
+<h3 id="diffusion-kernel-qz_tx">Diffusion Kernel q(z_t|x)</h3>
+<p><strong>Goal:</strong> Since computing <strong>z_t</strong> iteratively can be highly time consuming, we want to find a closed form expression.</p>
+<p><strong>Approach:</strong> By substituting the equation for <strong>z_{t-1}</strong> into <strong>z_t</strong> repeatedly, we can derive a closed form expression that skips all intermediate variables.</p>
+<p><strong>Closed Form Expression (Diffusion Kernel):</strong></p>
+<pre><code>z_t = √α_t · x + √(1-α_t) · ε,    α_t = ∏_{s=1}^t (1-β_s)
+</code></pre>
+<p>(Equation 18.7)</p>
+<pre><code>q(z_t|x) = Norm[√α_t · x, (1-α_t)I]
+</code></pre>
+<p>(Equation 18.8)</p>
+<h3 id="marginal-distribution-qz_t">Marginal Distribution q(z_t)</h3>
+<pre><code>q(z_t) = ∫∫ q(z_{1…t}|x)Pr(x) dz_{1…t-1} dx
+</code></pre>
+<p>(Equation 18.9)</p>
+<pre><code>q(z_t) = ∫ q(z_t|x)Pr(x) dx
+</code></pre>
+<p>(Equation 18.10)</p>
+<p><strong>Note:</strong> The marginal distribution q(<strong>z_t</strong>) cannot be written in closed form because we don't know the original data distribution Pr(<strong>x</strong>).</p>
+<h3 id="conditional-diffusion-distribution-qz_t-1z_t-x">Conditional Diffusion Distribution q(z_{t-1}|z_t, x)</h3>
+<pre><code>q(z_{t-1}|z_t, x) = q(z_t|z_{t-1}, x)q(z_{t-1}|x) / q(z_t|x)
+</code></pre>
+<p>(Equation 18.12)</p>
+<pre><code>q(z_{t-1}|z_t, x) = Norm[(√α_{t-1}β_t)/(1-α_t) · x + (√(1-β_t)(1-α_{t-1}))/(1-α_t) · z_t, (β_t(1-α_{t-1}))/(1-α_t)I]
+</code></pre>
+<p>(Equation 18.15)</p>
+<p><strong>Why is this useful?</strong> This distribution is used to train the decoder - it tells us the true distribution over <strong>z_{t-1}</strong> when we know both <strong>z_t</strong> and the training example <strong>x</strong>, which we do during training.</p>
+<h2 id="decoder">Decoder</h2>
+<p><strong>The Challenge:</strong> The true reverse distributions q(<strong>z_{t-1}</strong>|<strong>z_t</strong>) are complex, multi-modal distributions that depend on the unknown data distribution Pr(<strong>x</strong>).</p>
+<p><strong>Approach:</strong> We approximate the reverse process with learned normal distributions:</p>
+<pre><code>Pr(z_T) = Norm[0, I]
+Pr(z_{t-1}|z_t, φ_t) = Norm[f_t[z_t, φ_t], σ_t²I]
+Pr(x|z₁, φ₁) = Norm[f₁[z₁, φ₁], σ₁²I]
+</code></pre>
+<p>(Equation 18.16)</p>
+<p>where f_t[<strong>z_t</strong>, <strong>φ_t</strong>] is a neural network predicting the mean.</p>
+<h2 id="training">Training</h2>
+<h3 id="training-setup">Training Setup</h3>
+<p><strong>Joint Distribution:</strong></p>
+<pre><code>Pr(x, z_{1…T}|φ_{1…T}) = Pr(x|z₁, φ₁) ∏_{t=2}^T Pr(z_{t-1}|z_t, φ_t) · Pr(z_T)
+</code></pre>
+<p>(Equation 18.17)</p>
+<p><strong>Likelihood:</strong></p>
+<pre><code>Pr(x|φ_{1…T}) = ∫ Pr(x, z_{1…T}|φ_{1…T}) dz_{1…T}
+</code></pre>
+<p>(Equation 18.18)</p>
+<p><strong>Training Objective:</strong> Maximize the log-likelihood of the training data {<strong>x_i</strong>}:</p>
+<pre><code>φ̂_{1…T} = argmax_{φ_{1…T}} [∑_{i=1}^I log Pr(x_i|φ_{1…T})]
+</code></pre>
+<p>(Equation 18.19)</p>
+<h3 id="training-elbo">Training: ELBO</h3>
+<p><strong>The Problem:</strong> The marginalization in equation 18.18 is intractable! We cannot directly maximize the log-likelihood.</p>
+<p><strong>Evidence Lower Bound (ELBO):</strong></p>
+<pre><code>ELBO[φ_{1…T}] = ∫ q(z_{1…T}|x) log[Pr(x, z_{1…T}|φ_{1…T}) / q(z_{1…T}|x)] dz_{1…T}
+</code></pre>
+<p>(Equation 18.21)</p>
+<pre><code>ELBO[φ_{1…T}] = E_{q(z₁|x)}[log Pr(x|z₁, φ₁)]
+                 - ∑_{t=2}^T E_{q(z_t|x)}[D_KL(q(z_{t-1}|z_t, x) || Pr(z_{t-1}|z_t, φ_t))]
+</code></pre>
+<p>(Equation 18.25)</p>
+<h2 id="reparameterization">Reparameterization</h2>
+<h3 id="reparameterization-of-loss-function">Reparameterization of Loss Function</h3>
+<p><strong>Motivation:</strong> Predicting noise <strong>ε</strong> instead of <strong>z_{t-1}</strong> yields better empirical performance.</p>
+<p><strong>Approach:</strong>
+1. <strong>Reparameterize target:</strong> Express <strong>x</strong> in terms of noise: <strong>x</strong> = (1/√α_t)<strong>z_t</strong> - (√(1-α_t)/√α_t)<strong>ε</strong>
+2. <strong>Reparameterize network:</strong> Replace f_t[<strong>z_t</strong>, <strong>φ_t</strong>] (predicts <strong>z_{t-1}</strong>) with g_t[<strong>z_t</strong>, <strong>φ_t</strong>] (predicts <strong>ε</strong>)</p>
+<p><strong>Final Simplified Loss:</strong></p>
+<pre><code>L[φ_{1…T}] = ∑_{i=1}^I ∑_{t=1}^T ||g_t[√α_t · x_i + √(1-α_t) · ε_{it}, φ_t] - ε_{it}||²
+</code></pre>
+<p>(Equation 18.40)</p>
+<p>Train network to predict the noise that was added to create <strong>z_t</strong> from <strong>x</strong>.</p>
+<h2 id="implementation">Implementation</h2>
+<h3 id="application-to-images">Application to Images</h3>
+<p><strong>Network Architecture: U-Net</strong>
+- Image-to-image mapping: noisy image → predicted noise
+- Single U-Net shared across all time steps t = 1, …, T
+- Time step t encoded as sinusoidal embedding (like positional encoding)</p>
+<h3 id="improving-generation-speed">Improving Generation Speed</h3>
+<p><strong>Key Insight:</strong> The loss function (Eq. 18.40) is valid for any forward process with diffusion kernel q(<strong>z_t</strong>|<strong>x</strong>) = Norm[√α_t · <strong>x</strong>, √(1-α_t)<strong>I</strong>]</p>
+<p><strong>Denoising Diffusion Implicit Models</strong>
+- No longer stochastic after first step
+- i.e. from step z₁ to z_t</p>
+<p><strong>Accelerated Sampling Models</strong>
+- Forward process only on sub-sequence of steps
+- Skip steps during reverse process</p>
+<p><strong>Result:</strong> Much more efficient sampling</p>
+<h3 id="conditional-generation">Conditional Generation</h3>
+<p><strong>Goal:</strong> Control generation using labels c (class, text, etc.)</p>
+<p><strong>Classifier Guidance:</strong> Modify denoising update to make class c more likely:</p>
+<pre><code>z_{t-1} = ẑ_{t-1} + σ_t² · ∂log Pr(c|z_t)/∂z_t + σ_t · ε
+</code></pre>
+<p>(Equation 18.41)</p>
+<ul>
+<li>Requires separate classifier Pr(c|<strong>z_t</strong>) trained on latent variables</li>
+<li>Classifier shared across time steps (takes t as input)</li>
+</ul>
+<p><strong>Classifier-Free Guidance</strong>
+- Incorporate class directly into main model: g_t[<strong>z_t</strong>, <strong>φ_t</strong>, c]
+- Add embedding of c to U-Net layers (similar to time embedding)
+- Train on both conditional and unconditional objectives (by randomly dropping class information)</p>
+<h3 id="improving-generation-quality">Improving Generation Quality</h3>
+<p><strong>Key Techniques:</strong></p>
+<p><strong>1. Estimate Variances:</strong>
+- Learn σ_t² in addition to mean
+- Particularly helps when sampling with fewer steps</p>
+<p><strong>2. Adaptive Noise Schedule:</strong>
+- Vary β_t at each step for better results</p>
+<p><strong>3. Cascaded Diffusion Models:</strong>
+- First model: generate low-resolution image
+- Subsequent models: progressively increase resolution
+- Condition on lower-resolution image + class/text info</p>
+<hr />
+<h1 id="discussion-notes">Discussion Notes</h1>
+<ul>
+<li>
+<p>Unlike VAEs, Diffusion uses fixed forward noise (Gaussian).</p>
+<ul>
+<li>Removes encoder optimization. network focuses solely on the reverse denoising mapping.</li>
+</ul>
+</li>
+<li>
+<p>Model does not "remember" the original image to undo noise.</p>
+<ul>
+<li>Learns a gradient field pointing from noise $\to$ high-probability data manifold. Result is a realistic image, (but not the original).</li>
+</ul>
+</li>
+<li>
+<p><strong>Bottlenecks:</strong></p>
+<ul>
+<li><em>Training:</em> Parallelizable (can sample arbitrary $t$ immediately).</li>
+<li><em>Inference:</em> Sequential (Markov Chain). 1000+ steps $\to$ high latency vs. GANs (1 pass).</li>
+</ul>
+</li>
+<li>
+<p>Network predicts added noise, not the clean image $x$.</p>
+<ul>
+<li>Acts as residual learning. more stable than predicting means/images directly!</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1501 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://link-er.github.io/seminar_UDL_wise2526/reports/week03_ch5_6/">
+      
+      
+        <link rel="prev" href="../week02_ch3_4/">
+      
+      
+        <link rel="next" href="../week04_ch8_9/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Week 03 - Seminar "Understanding Deep Learning" WS25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#report-week-03-loss-functions-fitting-models" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-header__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Seminar "Understanding Deep Learning" WS25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 03
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-nav__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Seminar "Understanding Deep Learning" WS25/26
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reports
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01_kickoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02_ch3_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loss-functions-ivanna-romanovych" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loss Functions (Ivanna Romanovych)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loss Functions (Ivanna Romanovych)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-general-recipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The General Recipe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-maximum-likelihood-criterion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Maximum Likelihood Criterion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications-of-the-recipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applications of the Recipe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications of the Recipe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#univariate-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Univariate Regression
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binary Classification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiclass-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiclass Classification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-to-kl-divergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection to KL Divergence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fitting-models-lucas-filipiak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitting Models (Lucas Filipiak)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fitting Models (Lucas Filipiak)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-fitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Fitting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gradient Descent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradient Descent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1d-linear-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: 1D Linear Regression
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-gabor-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Gabor Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-gradient-descent-sgd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stochastic Gradient Descent (SGD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#momentum-based-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Momentum-based methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Momentum-based methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sgd-with-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SGD with momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nesterov-accelerated-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nesterov accelerated momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptive-movement-estimation-adam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adaptive movement estimation (Adam)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive movement estimation (Adam)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifications:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04_ch8_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05_ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 05
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06_ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 06
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07_ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 07
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08_ch10_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 08
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09_ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 09
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10_ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loss-functions-ivanna-romanovych" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loss Functions (Ivanna Romanovych)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Loss Functions (Ivanna Romanovych)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-general-recipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The General Recipe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-maximum-likelihood-criterion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Maximum Likelihood Criterion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications-of-the-recipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Applications of the Recipe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications of the Recipe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#univariate-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Univariate Regression
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binary Classification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiclass-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiclass Classification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multiple-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Outputs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-to-kl-divergence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection to KL Divergence
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fitting-models-lucas-filipiak" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fitting Models (Lucas Filipiak)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Fitting Models (Lucas Filipiak)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-fitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Fitting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gradient-descent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gradient Descent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gradient Descent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1d-linear-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: 1D Linear Regression
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-gabor-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Gabor Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stochastic-gradient-descent-sgd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stochastic Gradient Descent (SGD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#momentum-based-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Momentum-based methods
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Momentum-based methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sgd-with-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SGD with momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nesterov-accelerated-momentum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nesterov accelerated momentum
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adaptive-movement-estimation-adam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adaptive movement estimation (Adam)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adaptive movement estimation (Adam)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modifications:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="report-week-03-loss-functions-fitting-models">Report – Week 03: Loss Functions &amp; Fitting Models</h1>
+<p><strong>Presenter:</strong> Ivanna Romanovych and Lucas Filipiak</p>
+<p><strong>Date:</strong> 03.11.2025</p>
+<h2 id="summary">Summary</h2>
+<h3 id="loss-functions-ivanna-romanovych">Loss Functions (Ivanna Romanovych)</h3>
+<h4 id="the-general-recipe">The General Recipe</h4>
+<p>The process of adapting a model $f[x, \phi]$ to compute a probability distribution involves three steps:</p>
+<ol>
+<li><strong>Choose a Distribution:</strong> Select a parametric probability distribution $Pr(y|\theta)$ defined over the output domain $y$.</li>
+<li><strong>Predict Parameters:</strong> Configure the machine learning model to predict one or more of the distribution's parameters ($\theta$), such that $\theta = f[x, \phi]$.</li>
+<li><strong>Minimize Negative Log-Likelihood:</strong> Train the model by finding parameters $\phi$ that minimize the negative log-likelihood over the training dataset.</li>
+</ol>
+<h4 id="the-maximum-likelihood-criterion">The Maximum Likelihood Criterion</h4>
+<p>The objective is to maximize the likelihood of the parameters. This approach implicitly assumes the data are independent and identically distributed (I.I.D). Because the product of many probabilities can become incredibly small and difficult to represent with finite precision arithmetic, we equivalently maximize the logarithm of the likelihood.</p>
+<p>Therefore, the final loss function $L[\phi]$ becomes the minimization of the negative log-likelihood:</p>
+<p>$$\hat{\phi} = \underset{\phi}{\mathrm{argmin}} \left[ - \sum_{i=1}^{I} \log[Pr(y_i | f[x_i, \phi])] \right]$$</p>
+<h4 id="applications-of-the-recipe">Applications of the Recipe</h4>
+<h5 id="univariate-regression">Univariate Regression</h5>
+<p><strong>Goal:</strong> Predict a single scalar output $y \in \mathbb{R}$.</p>
+<ul>
+<li><strong>Distribution:</strong> Univariate Normal distribution defined by mean $\mu$ and variance $\sigma^2$.</li>
+<li><strong>Model Prediction:</strong> The model usually predicts the mean, $\mu = f[x, \phi]$.</li>
+<li><strong>Loss Derivation:</strong> Substituting the Normal distribution into the negative log-likelihood formula and performing algebraic manipulations yields the <strong>Least Squares Loss</strong> function.
+  $$L[\phi] = \sum_{i=1}^{I} (y_i - f[x_i, \phi])^2$$
+  This demonstrates that least squares loss naturally follows the assumption that predictions are drawn from a normal distribution.</li>
+</ul>
+<p><strong>Heteroscedastic Regression:</strong>
+If the uncertainty of the model varies as a function of the input data, the model is referred to as <strong>heteroscedastic</strong>. In this case, the model predicts both the mean $\mu$ and the variance $\sigma^2$ (modeled as $f_2[x, \phi]^2$).</p>
+<h4 id="binary-classification">Binary Classification</h4>
+<p><strong>Goal:</strong> Assign data to one of two discrete classes, where $y \in {0, 1}$.</p>
+<ul>
+<li><strong>Distribution:</strong> Bernoulli distribution, which has a single parameter $\lambda$ representing the probability that $y=1$.</li>
+<li><strong>Model Prediction:</strong> The model predicts $\lambda$. To ensure the prediction is a valid probability $\lambda \in [0, 1]$, the network output is passed through a <strong>sigmoid</strong> function:
+  $$\text{sig}[z] = \frac{1}{1 + \exp[-z]}$$</li>
+<li><strong>Loss Function:</strong> The resulting loss is the <strong>Binary Cross-Entropy</strong> loss:
+  $$L[\phi] = \sum_{i=1}^{I} -(1-y_i)\log[1-\text{sig}[f[x_i, \phi]]] - y_i\log[\text{sig}[f[x_i, \phi]]]$$</li>
+</ul>
+<h4 id="multiclass-classification">Multiclass Classification</h4>
+<p><strong>Goal:</strong> Assign data to one of $K &gt; 2$ classes.</p>
+<ul>
+<li><strong>Distribution:</strong> Categorical distribution with $K$ parameters ($\lambda_1, ..., \lambda_K$) representing the probability of each category.</li>
+<li><strong>Model Prediction:</strong> To ensure parameters are positive and sum to one, the network outputs are passed through the <strong>softmax</strong> function:
+  $$\text{softmax}<em>k[z] = \frac{\exp[z_k]}{\sum</em>{k'=1}^{K} \exp[z_{k'}]}$$</li>
+<li><strong>Loss Function:</strong> This results in the <strong>Multiclass Cross-Entropy</strong> loss:
+  $$L[\phi] = -\sum_{i=1}^{I} \log[\text{softmax}_{y_i}[f[x_i, \phi]]]$$</li>
+</ul>
+<h4 id="multiple-outputs">Multiple Outputs</h4>
+<p>When a model makes multiple predictions simultaneously, the predictions are usually treated as independent. This implies the probability is a product of univariate terms, meaning the loss function becomes a sum of the negative log probabilities for each output.</p>
+<h4 id="connection-to-kl-divergence">Connection to KL Divergence</h4>
+<p>The cross-entropy loss can be understood through the lens of <strong>Kullback-Leibler (KL) divergence</strong>. This metric evaluates the distance between the empirical distribution of the observed data, $q(y)$, and the model distribution, $Pr(y|\theta)$.</p>
+<p>Minimizing the KL divergence between the empirical distribution (represented as weighted sum of point masses at the data points) and the model distribution is mathematically equivalent to minimizing the negative log-likelihood.</p>
+<p>$$\hat{\phi} = \underset{\phi}{\mathrm{argmin}} \left[ -\sum_{i=1}^{I} \log[Pr(y_i | f[x_i, \phi])] \right]$$</p>
+<hr />
+<h3 id="fitting-models-lucas-filipiak">Fitting Models (Lucas Filipiak)</h3>
+<blockquote>
+<p>Figures and equations can be found on the slides</p>
+</blockquote>
+<h4 id="model-fitting">Model Fitting</h4>
+<ul>
+<li>Objective: minimize loss on the training set by adjusting the parameters</li>
+<li>Process: known as <em>model fitting</em></li>
+</ul>
+<h4 id="gradient-descent">Gradient Descent</h4>
+<ul>
+<li>Basic idea: change parameters in the direction opposite to the gradient of the loss function, going "downhill" in loss space</li>
+<li>Initialization: parameters start with heuristic values.</li>
+</ul>
+<h5 id="example-1d-linear-regression">Example: 1D Linear Regression</h5>
+<ul>
+<li>Model: linear function, 2 parameters</li>
+<li>Loss function: least squares </li>
+<li>Properties:<ul>
+<li>Convex loss surface  </li>
+<li>Local = global minimum</li>
+<li>No saddle points</li>
+</ul>
+</li>
+</ul>
+<h4 id="example-gabor-model">Example: Gabor Model</h4>
+<ul>
+<li>Nonlinear function involving sinusoidal and exponential terms, 2 parameters</li>
+<li>Loss: least squares</li>
+<li>Properties:<ul>
+<li>Non-convex loss surface</li>
+<li>Local minima may not be global  </li>
+<li>Saddle points possible</li>
+<li>Gradient descent may get "stuck" at local minima and saddle points</li>
+</ul>
+</li>
+</ul>
+<h4 id="stochastic-gradient-descent-sgd">Stochastic Gradient Descent (SGD)</h4>
+<ul>
+<li>Runs gradient descent iteratively on subsets of the training set</li>
+<li>
+<p>Pass of all training examples: epoch</p>
+</li>
+<li>
+<p>Advantages:</p>
+<ul>
+<li>Adds noise =&gt; helps escape local minima  </li>
+<li>Uses mini-batches =&gt; computationally cheaper per iteration  </li>
+<li>Improves generalization</li>
+</ul>
+</li>
+</ul>
+<h4 id="momentum-based-methods">Momentum-based methods</h4>
+<h5 id="sgd-with-momentum">SGD with momentum</h5>
+<ul>
+<li>
+<p>Incorporates previous updates into next step</p>
+</li>
+<li>
+<p>Advantages:</p>
+<ul>
+<li>Smoother trajectory</li>
+<li>Reduced oscillation at valleys</li>
+</ul>
+</li>
+</ul>
+<h5 id="nesterov-accelerated-momentum">Nesterov accelerated momentum</h5>
+<ul>
+<li>Computes gradient at position predicted by momentum</li>
+<li>Modification of SGD with momentum, same advantages</li>
+</ul>
+<h4 id="adaptive-movement-estimation-adam">Adaptive movement estimation (Adam)</h4>
+<ul>
+<li>Combines all previous approaches.</li>
+</ul>
+<h5 id="modifications">Modifications:</h5>
+<ol>
+<li>Disconnect step distance from gradient magnitude by normalizing the gradient</li>
+<li>Apply momentum</li>
+<li>Accelerate beginning movement</li>
+<li>Can operate in batches for efficiency</li>
+<li>
+<p>Optionally, apply in batches</p>
+</li>
+<li>
+<p>Advantages:</p>
+<ul>
+<li>Smooth trajectory</li>
+<li>Can converge at minima</li>
+</ul>
+</li>
+</ol>
+<h2 id="discussion-notes">Discussion Notes</h2>
+<ul>
+<li>
+<p><strong>Why does the presence of noise contributes to better finding the solution?</strong></p>
+<p>Noise in gradient-based optimization, e.g. through stochastic gradient descent, helps the optimizer escape local minima.
+Noise promotes exploration of the parameter space and often leads to solutions with better generalization.</p>
+</li>
+<li>
+<p><strong>What is a full-batch gradient descent?</strong></p>
+<p>Full-batch gradient descent computes the gradient of the loss function using the entire training dataset for each update.
+While this yields stable and deterministic updates, it is computationally expensive and lack stochasticity that can 
+improve optimization in non-convex problems. </p>
+</li>
+<li>
+<p><strong>What is the role of the learning rate, and how does it influence the behavior of gradient descent?</strong></p>
+<p>The learning rate controls the step size of parameter updates in the direction of the negative gradient.
+Small learning rates lead to slow but stable convergence, whereas large learning rates accelerate training but may
+cause instability or divergence.   </p>
+</li>
+<li>
+<p><strong>What is the advantage of computing both parameters $\mu$ and $\sigma^2$?</strong></p>
+<p>Predicting both $\mu$ and $\sigma^2$ allows the model to quantify uncertainty in its predictions. 
+This is particularly important in probabilistic and Bayesian settings.</p>
+</li>
+<li>
+<p><strong>When should Cross Entropy Loss be used, and when is Least Squares Loss more appropriate?</strong></p>
+<p>Least Squares Loss is best suited for regression tasks under a Gaussian noise assumption.
+Cross Entropy Loss is more appropriate for classification tasks, as it models probability distributions and directly
+optimizes class likelihoods. </p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

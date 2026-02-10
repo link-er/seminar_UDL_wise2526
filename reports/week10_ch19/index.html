@@ -1,0 +1,1091 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://link-er.github.io/seminar_UDL_wise2526/reports/week10_ch19/">
+      
+      
+        <link rel="prev" href="../week09_ch18/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Week 10 - Seminar "Understanding Deep Learning" WS25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#report-week-10-chapter-19-reinforcement-learning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-header__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Seminar "Understanding Deep Learning" WS25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 10
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-nav__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Seminar "Understanding Deep Learning" WS25/26
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reports
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01_kickoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02_ch3_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03_ch5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week04_ch8_9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05_ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 05
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06_ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 06
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07_ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 07
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08_ch10_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 08
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09_ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 09
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 10
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-markov-decision-processes-mdps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Markov Decision Processes (MDPs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-value-functions-bellman-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Value Functions &amp; Bellman Equations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-learning-paradigms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Learning Paradigms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-value-based-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Value-Based Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-policy-based-methods-policy-gradients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Policy-Based Methods (Policy Gradients)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-markov-decision-processes-mdps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Markov Decision Processes (MDPs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-value-functions-bellman-equations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Value Functions &amp; Bellman Equations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-learning-paradigms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Learning Paradigms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-value-based-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Value-Based Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-policy-based-methods-policy-gradients" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Policy-Based Methods (Policy Gradients)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="report-week-10-chapter-19-reinforcement-learning">Report – Week 10: (Chapter 19) Reinforcement Learning</h1>
+<p><strong>Presenter:</strong> Marc Gläser</p>
+<p><strong>Date:</strong> 29.01.2026
+<a href="https://www.youtube.com/watch?v=jSoTA0l9yLU"><img alt="Youtube Video" src="https://github.com/user-attachments/assets/a79ac59f-1687-4c16-8bf0-000debb885c5" /></a></p>
+<h2 id="summary">Summary</h2>
+<h3 id="overview">Overview</h3>
+<p><strong>Reinforcement Learning (RL):</strong> A framework in which an <strong>agent</strong> learns a policy $\pi$ to map states to actions in an <strong>environment</strong>, aiming to maximize the cumulative <strong>reward</strong> over time.</p>
+<p><strong>Key Challenges:</strong>
+- <strong>Temporal Credit Assignment:</strong> Determining which past action caused a current reward is hard.
+- <strong>Exploration vs. Exploitation:</strong> Balancing trying new actions (gathering data) vs. using known best actions (maximizing reward).</p>
+<h3 id="1-markov-decision-processes-mdps">1. Markov Decision Processes (MDPs)</h3>
+<p>Mathematical formalization of the RL problem:
+<strong>Definitions:</strong>
+- <strong>State ($s \in \mathcal{S}$):</strong> Complete description of the world configuration. (Everything is a state)
+- <strong>Action ($a \in \mathcal{A}$):</strong> discrete or continuous choices available to the agent. (For example left, right, up, down)
+- <strong>Transition ($P(s'|s, a)$):</strong> Probability of moving to state $s'$ given action $a$ in state $s$. (Can be 1 but normally isn't)
+- <strong>Reward ($r(s, a)$):</strong> Immediate scalar feedback signal. 
+- <strong>Discount Factor ($\gamma \in [0, 1]$):</strong> Weights future rewards. Ensures convergence.</p>
+<p><strong>Goal:</strong> Maximize the <strong>Expected Return</strong> ($G_t$):</p>
+<p>$$G_t = \sum_{k=0}^{\infty} \gamma^k r_{t+k+1}$$</p>
+<h3 id="2-value-functions-bellman-equations">2. Value Functions &amp; Bellman Equations</h3>
+<p>To solve the credit assignment problem, we estimate the long-term value of states:</p>
+<p><strong>Value Definitions:</strong>
+- <strong>State-Value Function $v_{\pi}(s)$:</strong> Expected return starting from $s$ following policy $\pi$.
+- <strong>Action-Value Function $q_{\pi}(s, a)$:</strong> Expected return taking action $a$ in $s$, then following $\pi$.</p>
+<p><strong>The Bellman Expectation Equation:</strong></p>
+<p>Decomposes value into <em>immediate reward</em> + <em>discounted value of successor state</em>. </p>
+<p>$$v_{\pi}(s) = \sum_a \pi(a|s) \sum_{s'} P(s'|s,a) [r + \gamma v_{\pi}(s')]$$</p>
+<h3 id="3-learning-paradigms">3. Learning Paradigms</h3>
+<p>Different options for computing these values are:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Characteristics</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dynamic Programming (DP)</strong></td>
+<td>Solves Bellman equations iteratively using the true Transition model $P$. (which we normally dont have)</td>
+<td><strong>Model-Based.</strong> Requires full knowledge of environment.</td>
+</tr>
+<tr>
+<td><strong>Monte Carlo (MC)</strong></td>
+<td>Estimates value by averaging returns $G_t$ from complete episodes.</td>
+<td><strong>Model-Free.</strong> High variance, unbiased. Requires termination.</td>
+</tr>
+<tr>
+<td><strong>Temporal Difference (TD)</strong></td>
+<td>Updates estimates based on other estimates (<em>bootstrapping</em>) after a single step.</td>
+<td><strong>Model-Free.</strong> Lower variance, biased. Update target: $r + \gamma v(s')$.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-value-based-methods">4. Value-Based Methods</h3>
+<p><strong>Strategy:</strong> Learn the optimal action-value function $q^*(s,a)$ and define policy as $\pi(s) = \text{argmax}_a q(s,a)$.</p>
+<p><strong>Tabular Q-Learning (TD Control):</strong>
+Updates $q$-values toward the <em>optimal</em> future value (off-policy), regardless of the actual action taken next.</p>
+<p>$$q(s,a) \leftarrow q(s,a) + \alpha [r + \gamma \max_{a'} q(s', a') - q(s,a)]$$</p>
+<p><strong>Deep Q-Learning (DQN):</strong></p>
+<p>Approximates the table with a Neural Network $f[s, \phi] \approx q^<em>(s,a)$.
+- </em><em>Loss Function:</em><em> $\mathcal{L}(\phi) = (y - q(s, a, \phi))^2$
+- </em><em>Target ($y$):</em>* $r + \gamma \max_{a'} q(s', a', \phi^-)$</p>
+<p><strong>Stability Modifications:</strong></p>
+<ol>
+<li><strong>Experience Replay:</strong> Buffer $\mathcal{D}$ stores transitions $(s,a,r,s')$. Random sampling breaks temporal correlation.</li>
+<li>
+<p><strong>Target Networks:</strong> Uses frozen parameters $\phi^-$ to compute targets, preventing "chasing your own tail."</p>
+</li>
+<li>
+<p><strong>Double DQN (DDQN):</strong></p>
+<ul>
+<li><em>Problem:</em> Max operator in Q-learning systematically overestimates values.</li>
+<li><em>Solution:</em> Decouple selection (online net $\phi$) and evaluation (target net $\phi^-$).</li>
+<li><em>Target:</em> $y = r + \gamma q(s', \text{argmax}_{a'} q(s', a', \phi), \phi^-)$.</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-policy-based-methods-policy-gradients">5. Policy-Based Methods (Policy Gradients)</h3>
+<p><strong>Strategy:</strong> Parameterize the policy $\pi(a|s, \theta)$ directly and optimize expected return $J(\theta)$ via Gradient Ascent.</p>
+<p><strong>The Policy Gradient Theorem:</strong></p>
+<p>The gradient update is calculated by using the Formular:</p>
+<p>$$
+\theta \leftarrow \theta+\alpha \cdot \frac{1}{I} \sum_{i=1}^I \sum_{t=1}^T \frac{\partial \log \left[\pi\left[a_{i t} \mid \mathrm{s}<em>{i t}, \theta\right]\right]}{\partial \theta} \sum</em>{k=t}^T r_{i, k+1} .
+$$</p>
+<p><strong>REINFORCE (Monte Carlo PG):</strong></p>
+<p>Uses the full actual return $G_t$ from the episode.
+- <em>Issue:</em> High variance because $G_t$ depends on long stochastic trajectories.</p>
+<p><strong>Actor-Critic (TD PG):</strong>
+Reduces variance by replacing $G_t$ with a lower-variance estimate.
+- <strong>Actor ($\theta$):</strong> Updates policy using the <strong>Advantage</strong>.
+- <strong>Critic ($\phi$):</strong> Learns value function $v(s, \phi)$ to compute the baseline.
+- <strong>Advantage Function:</strong> Quantifies how much better an action was than expected.
+    $$A(s_t, a_t) = \underbrace{r_t + \gamma v(s_{t+1}, \phi)}<em>{\text{TD Target}} - \underbrace{v(s_t, \phi)}</em>{\text{Baseline}}$$</p>
+<h2 id="discussion-notes">Discussion Notes</h2>
+<p><strong>What is reward?</strong></p>
+<ul>
+<li>A reward indicates how good or bad an action is after leaving a state. An example is collecting some coin in video games such as the Super mario games.</li>
+</ul>
+<p><strong>How can penalties be integrated?</strong></p>
+<ul>
+<li>Penalties can be included by assigning negative values to the rewards.</li>
+</ul>
+<p><strong>What problems occur when the reward are noisy?</strong></p>
+<ul>
+<li>For Q-Learning, when the policy selects the action with the maximum state-action value, this will often be overestimated due to noise. This leads to overreaction and can result in a chain reaction, which causes
+  even more overreactions.</li>
+</ul>
+<p><strong>In which order the actor and critic is performed?</strong></p>
+<ul>
+<li>In general, the actor are critic are executed in an alternating order. However, in the book it is not specified, how often it is performed.</li>
+</ul>
+<p><strong>How does the baseline need to be understood?</strong></p>
+<ul>
+<li>The baseline is used to reduce the variance, which is typically high in policy gradient methods.</li>
+</ul>
+<p><strong>When the optimal state values are known, what is the relation to the optimal policy?</strong></p>
+<ul>
+<li>The optimal policy can be inferred by choosing the next action with the highest state value. This is a greedy approach.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="https://udlbook.github.io/udlbook/">Understand Deep Learning</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

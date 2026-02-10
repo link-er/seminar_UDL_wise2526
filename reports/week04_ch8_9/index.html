@@ -1,0 +1,1197 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://link-er.github.io/seminar_UDL_wise2526/reports/week04_ch8_9/">
+      
+      
+        <link rel="prev" href="../week03_ch5_6/">
+      
+      
+        <link rel="next" href="../week05_ch7/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Week 04 - Seminar "Understanding Deep Learning" WS25/26</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#report-week-04-performance-regularization" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-header__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Seminar "Understanding Deep Learning" WS25/26
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Week 04
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Seminar &#34;Understanding Deep Learning&#34; WS25/26" class="md-nav__button md-logo" aria-label="Seminar "Understanding Deep Learning" WS25/26" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Seminar "Understanding Deep Learning" WS25/26
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/link-er/seminar_UDL_wise2526" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../schedule/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Schedule
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reports
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week01_kickoff/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 01
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week02_ch3_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 02
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week03_ch5_6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 03
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 04
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-8-measuring-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 8: Measuring performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter-9-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 9: Regularization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discussion Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#measuring-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regularization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week05_ch7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 05
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week06_ch12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 06
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week07_ch13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 07
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week08_ch10_11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 08
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week09_ch18/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 09
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../week10_ch19/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Week 10
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter-8-measuring-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 8: Measuring performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter-9-regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter 9: Regularization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Discussion Notes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Discussion Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#measuring-performance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Measuring performance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regularization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="report-week-04-performance-regularization">Report – Week 04: Performance &amp; Regularization</h1>
+<p><strong>Presenters:</strong> Ben Halima Ibrahim and Zoghlami Fadi </p>
+<p><strong>Date:</strong> 10.11.2025 </p>
+<h2 id="summary">Summary</h2>
+<h3 id="chapter-8-measuring-performance">Chapter 8: Measuring performance</h3>
+<p><strong><u>I - Training a simple model:</u></strong></p>
+<p>A neural network with <strong>sufficient capacity</strong> will mostly perform well on the training dataset. However, this does not mean that it will generalize well on the testing dataset (which is normally new and unseen data for the model). This causes a big problem especially for real-world scenarios, where the model's performance has to be as good as possible. <br>
+=&gt; Our goal is to train a model that <strong>generalizes well on new data</strong></p>
+<p>The test errors have three distinct causes:</p>
+<ul>
+<li>the inherent uncertainty in the task</li>
+<li>the amount of training data</li>
+<li>the choice of model</li>
+</ul>
+<p>In the first section of this chapter, a simple model is trained on the <a href="https://arxiv.org/pdf/2011.14439"><strong>MNIST-1D</strong></a> dataset, which is 1D analogue of the <a href="https://en.wikipedia.org/wiki/MNIST_database"><strong>MNIST</strong></a> dataset: each data example is created by <strong>randomly</strong> transforming one of the templates and adding noise.</p>
+<p><img alt="MNIST-1D dataset" src="../../images/MNIST-1D-Dataset.jpg" /></p>
+<p>Our simple model/neural network consists of <strong>D_i = 40</strong> inputs and <strong>D_o = 10</strong> outputs representing the number of classes the dataset has (<em>numbers form 0 to 9</em>). The neural network has <strong>2</strong> hidden layers each with <strong>D = 100</strong> hidden units. <strong>Multiclass cross-entropy</strong> is used as a loss function with the <strong>Softmax</strong> function to produce class probabilities.<br>
+The model is then trained for <strong>6000 steps (150 epochs)</strong> using <strong>SGD</strong> (Stochastic Gradient Descent) as a learning algorithm with a learning rate of <strong>0.1</strong> and a batch-size of <strong>100</strong>. After the training process, we tested our trained model on <strong>1000</strong> extra examples from the dataset.</p>
+<p><img alt="Train-Test-Error-Loss" src="../../images/PerfMNIST1DResults.svg" /></p>
+<p>In figure (a), we can see that the training error decreases as the training proceeds (the training data is classified perfectly after around <strong>4000
+training steps</strong>). The testing error, however, decreases as well but to about <strong>40%</strong> and does not drop below it.<br>
+In figure (b), the training loss also decreases continuously towards zero as the training proceeds. The testing loss, on the other hand, decreases at first but suddenly starts going up after around <strong>1500 training steps</strong> reaching higher values than before.<br>
+=&gt; Our model is making, in this case, the same mistakes but with increasing confidence and this will decrease the probability of correct answers, and therefore increase the negative log-likelihood<br>
+=&gt; Our model has then <strong>memorized</strong> the training data but <strong>does not generalize well</strong> on the testing data</p>
+<p><strong><u>II - Sources of error:</u></strong></p>
+<p>When a neural network fails to generalize well, there are mainly three sources of error:</p>
+<ul>
+<li><strong>Noise:</strong> the data generation process itself includes the addition of noise to the input data. Therefore, there are <strong>multiple possible valid</strong> outputs for each input (figure (a) below). This may be caused due to a <strong>stochastic element</strong> in the data generation process (mislabeled data as an example). In some rare cases, the noise can be <strong>absent</strong>: for example, a network might approximate a function that is deterministic but requires significant computation to evaluate.<br>
+=&gt; However, noise is <u>usually</u> a fundamental limitaion on the test performance</li>
+<li><strong>Bias:</strong> this happens when the model is <strong>not flexible enough</strong> to fit the data perfectly. In figure (b) below for example, the three-region model (<em>cyan line</em>) cannot exactly fit the true function (<em>black line</em>), even with the best possible parameters (<em>gray regions represent signed error</em>). </li>
+<li><strong>Variance:</strong> this occurs when there are <strong>limited</strong> training examples, and therefore there is no way to distinguish noise in the underlying data from systematic changes in the underlying function.This means that, for different training datasets, the result will be slightly different each time (figure (c) below). In practice, however, there can be an <strong>additional variance</strong> due to the stochastic learning algorithm, which does not necesseraliy converge to the same solution each time.</li>
+</ul>
+<p><img alt="Noise-Bias-Varinace" src="../../images/PerfNoiseBiasVariance.svg" /></p>
+<ul>
+<li><strong>Mathematical formulation of test error:</strong></li>
+</ul>
+<p><img alt="Noise-Bias-Variance-Equation" src="../../images/Noise-Bias-Variance-Equation.png" /></p>
+<p><strong><u>III - Reducing error:</u></strong></p>
+<p>The <strong>Noise</strong> component is <strong>insurmountable</strong>, which means there is nothing we can do to avoid it. It represents a <u>fundamental limit</u> on expected model performance. <strong>However</strong>, we can reduce the Variance and Bias terms.</p>
+<ul>
+<li><strong>Reducing Variance:</strong> variance results from limited noisy training data. This actually means that we can reduce it by <strong>increasing the quantity</strong> of our training data. This approach averages out the inherent noise and ensures that the input space is well sampled.<br>
+The figure below shows the effect of training with three different samples (<em>6, 10 and 100 samples</em>). The best-fitting model for each dataset is then plotted: as we can see, with only <strong>6 samples</strong>, the fitted function is <u>different</u> each time and the variance term is therefore significant. When we <strong>increase</strong> the number of samples, the fitted models become very <u>similar</u> and the variance term reduces as a result.</li>
+</ul>
+<p><img alt="Reducing-Variance" src="../../images/PerfVariance.svg" /></p>
+<p>=&gt; In general, adding more training data <u>almost always</u> improves test performance.</p>
+<ul>
+<li><strong>Reducing Bias:</strong> in order to reduce the bias term, we can <strong>increase the capacity</strong> of our model/neural network (number of hidden units and/or layers) which makes it <strong>more flexible</strong> and able to describe the true underlying function.<br>
+The figure below shows the effect of increasing the number of linear regions (<em>3, 5 and 10 regions</em>): by increasing the number of linear
+regions, the model becomes flexible enough to fit the true function closely. As a result, the bias term decreases (<em>gray region in a-c</em>). <strong>Unfortuantely</strong>, this causes the variance term to go up (<em>gray region d-f</em>).<br>
+=&gt; Increasing the model capacity <u>does not necesseraliy</u> reduce the test error ==&gt; <strong>Bias-Variance trade-off</strong></li>
+</ul>
+<p><img alt="Reducing-Bias" src="../../images/PerfBias.svg" /></p>
+<ul>
+<li><strong>Bias-Variance trade-off:</strong> when a model is too simple (<em>low capacity</em>), it <strong>ignores</strong> useful information, and the error is composed mostly of that from bias ==&gt; <strong>Underfitting</strong><br>
+When a model is too complex, it <strong>memorizes</strong> non-general patterns, and the error is composed mostly of that from variance ==&gt; <strong>Overfitting</strong><br>
+In both cases the model does not generalize well on new unseen data. The ideal model aims to <u>minimize</u> both bias and variance. It lays in the sweet-spot in between (not too simple, nor too complex) =&gt; Achieving such a balance will yield the <strong>minimum error</strong></li>
+</ul>
+<p><img alt="Bias-Variance-trade-off" src="../../images/PerfBiasVarianceTradeoff.svg" /></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Bias</th>
+<th>Variance</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Underfitting</strong></td>
+<td>High</td>
+<td>Low</td>
+<td>Poor training and test performances</td>
+</tr>
+<tr>
+<td><strong>Optimal</strong></td>
+<td>Moderate</td>
+<td>Moderate</td>
+<td>Best generalization</td>
+</tr>
+<tr>
+<td><strong>Overfitting</strong></td>
+<td>Low</td>
+<td>High</td>
+<td>Poor test performance</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Double descent:</strong> in classical machine learning, increasing the model complexity follows a U-shaped curve: test error decreases as bias drops, but eventually increases as the model overfits to noise (<strong>high variance</strong>). However, modern deep networks often exhibit <strong>double descent</strong>:</li>
+</ul>
+<p><u>The First Descent:</u> Error drops as the model learns the underlying function.</p>
+<p><u>The Interpolation Threshold:</u> As capacity increases, the model reaches a point where it can exactly fit (interpolate) the training data, leading to zero training error. At this threshold, the test error typically peaks because the model is highly sensitive to training noise.</p>
+<p><u>The Second Descent:</u> Surprisingly, increasing capacity beyond this threshold causes the test error to decrease again, often reaching a lower error than the previous "optimal" point. This is because larger models tend to find smoother solutions that generalize better.</p>
+<p><img alt="Double-descent" src="../../images/double-descent.png" /></p>
+<p>This phenomenon is illustrated in the book using the MNIST-1D dataset, where the test error continues to decrease even after the model has reached the capacity to memorize the dataset. While classical theory suggests that highly overparameterized models <strong>should generalize poorly</strong>, the double descent curve shows that larger models can actually lead to <strong>better performance</strong>, challenging traditional notions of overfitting.</p>
+<p><strong><u>IV - Choosing hyperparameters:</u></strong></p>
+<p>Hyperparameters consist of not only the number of hidden layers and the number of hidden units per layer, but also of the learning rate, the choice of the learning algorithm itself, the batch size and much more. The process of finding the best hyperparameters is called <strong>hyperparameter search</strong> or <strong>neural architecture search</strong> (when focusing on the network structure).</p>
+<p>Hyperparameters are typically chosen <u>empirically</u>: we train many models with different hyperparameters on the <strong>same training dataset</strong>, then measure their performance and retain the best model. However, measuring the performance <strong>does not</strong> happen on the test set, as this may produce good results on only that specific set but the model does not generalize well on other new unseen data. Instead, we use a third dataset called the <strong>validation set</strong>. That means, for each choice of hyperparameters we train our model on the training set and evaluate its performance on the validation set and finally test the model using the testing set.</p>
+<h3 id="chapter-9-regularization">Chapter 9: Regularization</h3>
+<p><strong>Introduction: Why Regularization Is Needed</strong></p>
+<p>Neural networks are powerful function approximators, capable of learning highly complex relationships from data. However, this expressive power can easily become a drawback. When a model has many parameters, it can fit the training data extremely closely, including random fluctuations and noise. While this often leads to very low training error, it does not necessarily translate into good performance on unseen data. This phenomenon is known as overfitting.</p>
+<p>Regularization addresses this issue by limiting the effective complexity of the model and encouraging solutions that generalize beyond the training set. Rather than focusing solely on minimizing training error, regularization introduces additional constraints or biases that reflect the idea that simpler models are often preferable. In practice, regularization methods guide the learning process toward parameter configurations that are more stable, less sensitive to small perturbations, and better aligned with the underlying structure of the data.</p>
+<p>Several regularization techniques are presented, ranging from explicit penalties added to the loss function to implicit effects arising from optimization, as well as data- and model-based approaches such as dropout,  ensembling, and data augmentation...</p>
+<p><strong>1. Explicit Regularization</strong></p>
+<p>Explicit regularization modifies the training objective by adding a penalty term that discourages certain parameter configurations, most commonly those involving large weight values. The optimization problem becomes: </p>
+<p><img alt="1" src="../../images/regularization/regularization%201.png" /></p>
+<p>Here, ℓ𝑖(𝑥𝑖,𝑦𝑖) represents the data loss, 𝑔(𝜙) is a regularization function, and 𝜆 controls the strength of the penalty. A common choice is L2 regularization, where 𝑔(𝜙)=∥𝜙∥^2</p>
+<p>The intuition behind explicit regularization is that large weights tend to produce highly sensitive models, where small changes in the input can lead to large changes in the output. By penalizing large parameter values, the optimization process must balance two competing objectives: fitting the training data accurately and keeping the model parameters within a reasonable range. As 𝜆 increases, the model is increasingly encouraged to favor simpler parameter configurations, even if this slightly increases training error.</p>
+<p><strong>1.1 Loss Landscape Interpretation</strong></p>
+<p><img alt="2" src="../../images/regularization/regularization%202.png" /></p>
+<p>A useful way to understand explicit regularization is through loss landscapes. The original loss surface may contain many sharp minima corresponding to highly specialized solutions that fit the training data very closely. The regularization term typically has a smooth, convex shape centered around zero. When the two are combined, the resulting loss surface becomes smoother and often shifts the location of the minimum toward flatter regions. These flatter minima are generally associated with better generalization, as they indicate solutions that are less sensitive to small changes in the parameters.</p>
+<p><strong>1.2 Probabilistic Interpretation of Regularization</strong></p>
+<p>Regularization can also be interpreted within a probabilistic framework. Training a neural network using standard loss functions corresponds to maximizing the likelihood of the observed data:</p>
+<p><img alt="3" src="../../images/regularization/regularization%203.png" /></p>
+<p>Introducing a regularization term is equivalent to assuming a prior distribution over the parameters. This leads to:</p>
+<p><img alt="4" src="../../images/regularization/regularization%204.png" /></p>
+<p>Taking the negative logarithm reveals that the regularization term corresponds to the <strong>negative log-prior</strong>. For example, penalizing large weights (L2) is equivalent to assuming that parameters are more likely to be close to zero than extremely large in magnitude. This interpretation provides a principled justification for regularization and clarifies the role of the hyperparameter 𝜆 as a trade-off between fitting the data and enforcing prior assumptions.</p>
+<p><strong>2. Implicit Regularization</strong></p>
+<p><strong>2.1 Gradient Descent</strong></p>
+<p><img alt="5" src="../../images/regularization/regularization%205.png" /></p>
+<p>Interestingly, regularization effects can arise even when no explicit penalty is added to the loss function. Gradient descent (cyan trajectory), when implemented with a finite step size 𝛼, does not follow the exact continuous trajectory (gray trajectory) implied by gradient flow. Instead, parameters are updated discretely:</p>
+<p><img alt="6" src="../../images/regularization/regularization%206.png" /></p>
+<p>When adding regularization term to the continuous path, it causes the optimization path to deviate from it's current trajectory to the same gray one. It can be shown that gradient descent effectively minimizes a <strong>modified loss function</strong> similar to an explicit regularization case (c). mathematically, this can be shown as :</p>
+<p><img alt="7" src="../../images/regularization/regularization%207.png" /></p>
+<p>The additional term penalizes regions where the gradient norm is large, meaning steep parts of the loss surface. As a result, gradient descent tends to favor flatter minima, which are known to generalize better. This phenomenon also explains why, in some cases, larger learning rates lead to improved generalization, as they strengthen this implicit regularization effect.</p>
+<p><img alt="8" src="../../images/regularization/regularization%208.png" /></p>
+<p><strong>2.2 Implicit Regularization in Stochastic Gradient Descent (SGD)</strong></p>
+<p>Stochastic gradient descent introduces an additional source of implicit regularization through randomness. Because gradients are computed using mini-batches, each update is only an approximation of the true gradient over the entire dataset. Different mini-batches can produce slightly different gradient directions.</p>
+<p>The effective loss minimized by SGD can be written as:</p>
+<p><img alt="9" src="../../images/regularization/regularization%209.png" /></p>
+<p>The new additional term corresponds to the variance of gradients across mini-batches.
+Each mini-batch gives a slightly different gradient direction. if one mini-batch points one way, and another batch points the opposite way ⇒ poor generalization.
+if all batches roughly agree, that means the model fits everything reasonably well ⇒  better generalization.
+meaning SGD implicitly favors solutions where all batches agree on the gradient direction, indicating a more uniform fit across the dataset.</p>
+<p>Consequently, SGD tends to favor parameter configurations where gradients are consistent across batches, meaning the model fits all parts of the data reasonably well rather than fitting some examples extremely well at the expense of others. This provides insight into why smaller batch sizes often lead to better generalization and why SGD frequently outperforms full-batch gradient descent in practice.</p>
+<p><strong>3. Early Stopping</strong></p>
+<p>Early stopping is a simple yet powerful regularization technique based on monitoring model performance during training. Initially, training reduces both training and validation error as the model learns the general structure of the data. After a certain point, continued training primarily improves performance on the training set while degrading performance on the validation set.</p>
+<p><img alt="10" src="../../images/regularization/regularization%2010.png" /></p>
+<p>In the early stages, the model output closely follows the true underlying function. With prolonged training, the model becomes increasingly complex and overfits the noisy training points (e &amp; f).</p>
+<p>By monitoring the validation loss and stopping training when it stops improving, early stopping effectively limits model complexity. This technique has been shown to behave similarly to L2 regularization, as it prevents weights from growing too large.</p>
+<p><strong>4. Ensembling</strong></p>
+<p>Ensembling improves generalization by combining the predictions of multiple models. Instead of relying on a single trained network, the final prediction is obtained by averaging outputs or pre-softmax activations; Each individual model may overfit in a slightly different way. By averaging their predictions, random fluctuations and noise are reduced and individual errors tend to cancel out.
+Common ensembling strategies include:
+  -Training models with different random initializations
+  -Bagging (bootstrap aggregating)
+  -Using different architectures or hyperparameters</p>
+<p><strong>5. Dropout</strong></p>
+<p>Dropout introduces regularization by randomly deactivating neurons during training. This prevents the network from relying too heavily on specific activations and forces it to distribute information across multiple pathways.</p>
+<p><img alt="11" src="../../images/regularization/regularization%2011.png" /></p>
+<p>By preventing neurons from relying too strongly on specific other neurons (co-adaptation), dropout forces the network to learn more robust, distributed representations. Over many iterations, sharp irregularities or undesirable kink (b) in the learned function are smoothed out.</p>
+<p><img alt="12" src="../../images/regularization/regularization%2012.png" /></p>
+<p><strong>8. Noise Injection</strong></p>
+<p>Adding noise during training is another way to encourage robustness. Noise can be applied to inputs, parameters, or labels.</p>
+<p><img alt="13" src="../../images/regularization/regularization%2013.png" /></p>
+<p>Adding noise forces the model to perform well despite small perturbations, discouraging overfitting. Input noise teaches invariance to irrelevant variations, weight noise encourages stability under parameter perturbations, and label smoothing prevents the model from becoming overly confident.</p>
+<p><strong>9. Transferlearning</strong></p>
+<p>Higher-level regularization strategies rely on sharing information across tasks or data variations. Transfer learning allows a model to reuse representations learned from a large related dataset, reducing the need to learn everything from scratch, which is particularly useful when labeled data is scarce.</p>
+<p>Multi-task learning trains a single model on several related tasks simultaneously, encouraging shared representations that capture common structure.</p>
+<p><strong>10. Data Augmentaion</strong></p>
+<p>Data augmentation increases the effective size of the training dataset by applying label-preserving transformations to existing samples. Common transformations include flipping, rotating, cropping, or adding color variations. By exposing the model to a wider range of inputs, data augmentation teaches invariance to irrelevant variations and significantly reduces overfitting.</p>
+<h2 id="discussion-notes">Discussion Notes</h2>
+<h3 id="measuring-performance">Measuring performance</h3>
+<p><strong>How do we determine if we have enough training samples?</strong></p>
+<ul>
+<li>There is no fixed limit or specific number of samples required, it depends on the task and the dimensionality of the data.</li>
+<li>As the number of dimensions increases, the volume of the input space grows exponentially so the amount of data required also increases exponentially.</li>
+</ul>
+<p><strong>What is the Generalization Gap?</strong></p>
+<ul>
+<li>It is the difference between the model's performance on the training data and its performance on new test data.</li>
+</ul>
+<p><strong>Why does Test Loss increase even while accuracy stabilizes or improves?</strong></p>
+<ul>
+<li>Overconfidence, doesn't allow us to know if it's making a mistake because it's so confident.</li>
+<li>Softmax Effect, activations are pushed to extreme values to make the probability of the correct class higher.</li>
+</ul>
+<p><strong>What is the Bias-Variance Trade-off?</strong>
+Balance between model complexity and error:</p>
+<ul>
+<li>High bias, low variance - underfitting.</li>
+<li>Low bias, high variance - overfitting.</li>
+</ul>
+<hr />
+<ul>
+<li>
+<p>What exactly is bias and variance?</p>
+<ul>
+<li>Bias: fitting is limited by the expressiveness of the model =&gt; underfitting</li>
+<li>Variance: prediction strongly depends on specific training set instead of averaging =&gt; overfitting</li>
+</ul>
+</li>
+<li>
+<p>Low training error doesn't guarantee low test error, but it is the hope: generalization</p>
+</li>
+<li>
+<p>Training increases confidence even in wrong predictions =&gt; cross-entropy can grow even while accuracy stays constant (sign of overfitting)</p>
+</li>
+<li>
+<p>Generalization is measured by test error or gap between training and test error</p>
+</li>
+<li>
+<p>Should you stop training when the testing error stays the same?</p>
+<ul>
+<li>Potentially reduces overfitting</li>
+</ul>
+</li>
+<li>
+<p>When do you have enough training/test data?</p>
+<ul>
+<li>More data generally helps, also depends on problem</li>
+<li>Architecture of neural network should be able to "accommodate" the data</li>
+<li>Cost factor must be considered</li>
+</ul>
+</li>
+<li>
+<p>High-dimensional problems require exponentially many samples, underlying lower-dimensional manifolds could help</p>
+</li>
+</ul>
+<hr />
+<h3 id="regularization">Regularization</h3>
+<p><strong>What is Explicit Regularization?</strong></p>
+<ul>
+<li>Explicit regularization involves adding a term to the loss function that penalizes certain parameter values to discourage overfitting.</li>
+<li>Maximizing the product of Likelihood and Prior is equivalent to minimizing the sum of Loss and Regularization.</li>
+</ul>
+<p><strong>How does L2 Regularization work?</strong></p>
+<ul>
+<li>It adds a penalty proportional to the sum of the squared weights.</li>
+<li>This encourages weights to be small.</li>
+<li>It reduces variance but increases bias. In over-parameterized models.</li>
+</ul>
+<hr />
+<ul>
+<li>
+<p>Gaussian prior: belief that small parameters are more probable; applies to hypothesis space not directly to data</p>
+</li>
+<li>
+<p>How does regularization come into the bias-variance-tradeoff?</p>
+<ul>
+<li>Increases bias while reducing variance and overfitting risk (depends on type)</li>
+</ul>
+</li>
+<li>
+<p>Data augmentation increases complexity despite producing samples that lie in the same manifold</p>
+</li>
+<li>
+<p>Why use L2-regularization, especially in comparison to L1-regularization?</p>
+<ul>
+<li>L1 promotes zero weights while L2 penalizes large weights smoothly</li>
+</ul>
+</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>IBM - What is overfitting ? <a href="https://www.ibm.com/think/topics/overfitting">[Link]</a></li>
+<li>Three Sources of Model Error: Bias, Variance, and Noise <a href="https://python.plainenglish.io/three-sources-of-model-error-bias-variance-and-noise-9d740c0ba5d6">[Link]</a></li>
+<li>A Modern Take on the Bias-Variance Tradeoff in Neural Networks <a href="https://arxiv.org/pdf/1810.08591">[Link]</a></li>
+<li>The Bias-Variance trade-off <a href="https://mlu-explain.github.io/bias-variance/">[Link]</a></li>
+<li>The Importance of Data Splitting <a href="https://mlu-explain.github.io/train-test-validation/">[Link]</a></li>
+<li>Deep Double Descent: where bigger models and more data hurt <a href="https://arxiv.org/pdf/1912.02292">[Link]</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
