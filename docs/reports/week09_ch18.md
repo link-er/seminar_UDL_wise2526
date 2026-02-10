@@ -238,3 +238,16 @@ z_{t-1} = ẑ_{t-1} + σ_t² · ∂log Pr(c|z_t)/∂z_t + σ_t · ε
 ---
 # Discussion Notes
 
+
+- Unlike VAEs, Diffusion uses fixed forward noise (Gaussian).
+    - Removes encoder optimization. network focuses solely on the reverse denoising mapping.
+        
+- Model does not "remember" the original image to undo noise.
+    - Learns a gradient field pointing from noise $\to$ high-probability data manifold. Result is a realistic image, (but not the original).
+- **Bottlenecks:**
+    - _Training:_ Parallelizable (can sample arbitrary $t$ immediately).
+    - _Inference:_ Sequential (Markov Chain). 1000+ steps $\to$ high latency vs. GANs (1 pass).
+        
+- Network predicts added noise, not the clean image $x$.
+    - Acts as residual learning. more stable than predicting means/images directly!
+        
